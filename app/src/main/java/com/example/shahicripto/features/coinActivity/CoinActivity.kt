@@ -6,6 +6,7 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.content.ContextCompat
+import cn.pedant.SweetAlert.SweetAlertDialog
 import com.example.shahicripto.R
 import com.example.shahicripto.apiManager.ALL
 import com.example.shahicripto.apiManager.ApiManager
@@ -43,6 +44,17 @@ class CoinActivity : AppCompatActivity() {
 
         initUi()
 
+        binding.layoutToolbar.info.setOnClickListener {
+            val dialog = SweetAlertDialog(this , SweetAlertDialog.NORMAL_TYPE)
+            dialog.titleText = "About developer"
+            dialog.contentText = "<< Amirreza Shahivand >>  gmail : shahivandamirreza@gmail.com \n github : AmirrezaShahivand"
+            dialog.confirmText = "OK :)"
+            dialog.show()
+
+            dialog.setConfirmClickListener {
+                dialog.dismiss()
+            }
+        }
     }
 
     private fun initUi() {

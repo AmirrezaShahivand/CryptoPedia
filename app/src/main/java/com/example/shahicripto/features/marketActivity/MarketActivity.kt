@@ -48,7 +48,7 @@ class MarketActivity : AppCompatActivity(), MarketAdapter.RecyclerCallback {
         binding.layoutToolbar.info.setOnClickListener {
             val dialog = SweetAlertDialog(this , SweetAlertDialog.NORMAL_TYPE)
             dialog.titleText = "About developer"
-            dialog.contentText = "Amirreza Shahivand \n gmail : shahivandamirreza@gmail.com \n github : AmirrezaShahivand"
+            dialog.contentText = "<< Amirreza Shahivand >>  gmail : shahivandamirreza@gmail.com \n github : AmirrezaShahivand"
             dialog.confirmText = "OK :)"
             dialog.show()
 
