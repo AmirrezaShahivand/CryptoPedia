@@ -1,0 +1,42 @@
+[
+    {
+        "merged": "C:\\Users\\intel\\.gradle\\daemon\\8.0\\com.example.shahicripto.app-mergeDebugResources-32:\\layout\\module_chart.xml",
+        "source": "C:\\Users\\intel\\.gradle\\daemon\\8.0\\com.example.shahicripto.app-main-35:\\layout\\module_chart.xml"
+    },
+    {
+        "merged": "C:\\Users\\intel\\.gradle\\daemon\\8.0\\com.example.shahicripto.app-mergeDebugResources-32:\\layout\\module_statistics.xml",
+        "source": "C:\\Users\\intel\\.gradle\\daemon\\8.0\\com.example.shahicripto.app-main-35:\\layout\\module_statistics.xml"
+    },
+    {
+        "merged": "C:\\Users\\intel\\.gradle\\daemon\\8.0\\com.example.shahicripto.app-mergeDebugResources-32:\\layout\\module_news.xml",
+        "source": "C:\\Users\\intel\\.gradle\\daemon\\8.0\\com.example.shahicripto.app-main-35:\\layout\\module_news.xml"
+    },
+    {
+        "merged": "C:\\Users\\intel\\.gradle\\daemon\\8.0\\com.example.shahicripto.app-mergeDebugResources-32:\\layout\\module_watchlist.xml",
+        "source": "C:\\Users\\intel\\.gradle\\daemon\\8.0\\com.example.shahicripto.app-main-35:\\layout\\module_watchlist.xml"
+    },
+    {
+        "merged": "C:\\Users\\intel\\.gradle\\daemon\\8.0\\com.example.shahicripto.app-mergeDebugResources-32:\\layout\\item_recycler_market.xml",
+        "source": "C:\\Users\\intel\\.gradle\\daemon\\8.0\\com.example.shahicripto.app-main-35:\\layout\\item_recycler_market.xml"
+    },
+    {
+        "merged": "C:\\Users\\intel\\.gradle\\daemon\\8.0\\com.example.shahicripto.app-mergeDebugResources-32:\\layout\\module_about.xml",
+        "source": "C:\\Users\\intel\\.gradle\\daemon\\8.0\\com.example.shahicripto.app-main-35:\\layout\\module_about.xml"
+    },
+    {
+        "merged": "C:\\Users\\intel\\.gradle\\daemon\\8.0\\com.example.shahicripto.app-mergeDebugResources-32:\\layout\\module_toolbar.xml",
+        "source": "C:\\Users\\intel\\.gradle\\daemon\\8.0\\com.example.shahicripto.app-main-35:\\layout\\module_toolbar.xml"
+    },
+    {
+        "merged": "com.example.shahicripto.app-mergeDebugResources-32:/layout/module_toolbar.xml",
+        "source": "com.example.shahicripto.app-main-35:/layout/module_toolbar.xml"
+    },
+    {
+        "merged": "C:\\Users\\intel\\.gradle\\daemon\\8.0\\com.example.shahicripto.app-mergeDebugResources-32:\\layout\\activity_coin.xml",
+        "source": "C:\\Users\\intel\\.gradle\\daemon\\8.0\\com.example.shahicripto.app-main-35:\\layout\\activity_coin.xml"
+    },
+    {
+        "merged": "C:\\Users\\intel\\.gradle\\daemon\\8.0\\com.example.shahicripto.app-mergeDebugResources-32:\\layout\\activity_market.xml",
+        "source": "C:\\Users\\intel\\.gradle\\daemon\\8.0\\com.example.shahicripto.app-main-35:\\layout\\activity_market.xml"
+    }
+]

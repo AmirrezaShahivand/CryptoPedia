@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3" xmlns:ns1="http://schemas.android.com/tools"><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="main$Generated" generated="true" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="C:\Users\intel\AndroidStudioProjects\ShahiCripto\app\src\main\res"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="main" generated-set="main$Generated" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="C:\Users\intel\AndroidStudioProjects\ShahiCripto\app\src\main\res"><file name="background_rounded_all" path="C:\Users\intel\AndroidStudioProjects\ShahiCripto\app\src\main\res\drawable\background_rounded_all.xml" qualifiers="" type="drawable"/><file name="button_back" path="C:\Users\intel\AndroidStudioProjects\ShahiCripto\app\src\main\res\drawable\button_back.xml" qualifiers="" type="drawable"/><file name="ic_info" path="C:\Users\intel\AndroidStudioProjects\ShahiCripto\app\src\main\res\drawable\ic_info.xml" qualifiers="" type="drawable"/><file name="ic_launcher_background" path="C:\Users\intel\AndroidStudioProjects\ShahiCripto\app\src\main\res\drawable\ic_launcher_background.xml" qualifiers="" type="drawable"/><file name="img_news" path="C:\Users\intel\AndroidStudioProjects\ShahiCripto\app\src\main\res\drawable\img_news.png" qualifiers="" type="drawable"/><file name="range_radio_btn_selector" path="C:\Users\intel\AndroidStudioProjects\ShahiCripto\app\src\main\res\drawable\range_radio_btn_selector.xml" qualifiers="" type="drawable"/><file name="range_radio_btn_selector_background" path="C:\Users\intel\AndroidStudioProjects\ShahiCripto\app\src\main\res\drawable\range_radio_btn_selector_background.xml" qualifiers="" type="drawable"/><file name="ic_launcher_foreground" path="C:\Users\intel\AndroidStudioProjects\ShahiCripto\app\src\main\res\drawable-v24\ic_launcher_foreground.xml" qualifiers="v24" type="drawable"/><file name="activity_coin" path="C:\Users\intel\AndroidStudioProjects\ShahiCripto\app\src\main\res\layout\activity_coin.xml" qualifiers="" type="layout"/><file name="activity_market" path="C:\Users\intel\AndroidStudioProjects\ShahiCripto\app\src\main\res\layout\activity_market.xml" qualifiers="" type="layout"/><file name="item_recycler_market" path="C:\Users\intel\AndroidStudioProjects\ShahiCripto\app\src\main\res\layout\item_recycler_market.xml" qualifiers="" type="layout"/><file name="module_about" path="C:\Users\intel\AndroidStudioProjects\ShahiCripto\app\src\main\res\layout\module_about.xml" qualifiers="" type="layout"/><file name="module_chart" path="C:\Users\intel\AndroidStudioProjects\ShahiCripto\app\src\main\res\layout\module_chart.xml" qualifiers="" type="layout"/><file name="module_news" path="C:\Users\intel\AndroidStudioProjects\ShahiCripto\app\src\main\res\layout\module_news.xml" qualifiers="" type="layout"/><file name="module_statistics" path="C:\Users\intel\AndroidStudioProjects\ShahiCripto\app\src\main\res\layout\module_statistics.xml" qualifiers="" type="layout"/><file name="module_toolbar" path="C:\Users\intel\AndroidStudioProjects\ShahiCripto\app\src\main\res\layout\module_toolbar.xml" qualifiers="" type="layout"/><file name="module_watchlist" path="C:\Users\intel\AndroidStudioProjects\ShahiCripto\app\src\main\res\layout\module_watchlist.xml" qualifiers="" type="layout"/><file name="ic_launcher" path="C:\Users\intel\AndroidStudioProjects\ShahiCripto\app\src\main\res\mipmap-anydpi-v26\ic_launcher.xml" qualifiers="anydpi-v26" type="mipmap"/><file name="ic_launcher_round" path="C:\Users\intel\AndroidStudioProjects\ShahiCripto\app\src\main\res\mipmap-anydpi-v26\ic_launcher_round.xml" qualifiers="anydpi-v26" type="mipmap"/><file name="ic_launcher" path="C:\Users\intel\AndroidStudioProjects\ShahiCripto\app\src\main\res\mipmap-hdpi\ic_launcher.webp" qualifiers="hdpi-v4" type="mipmap"/><file name="ic_launcher_round" path="C:\Users\intel\AndroidStudioProjects\ShahiCripto\app\src\main\res\mipmap-hdpi\ic_launcher_round.webp" qualifiers="hdpi-v4" type="mipmap"/><file name="ic_launcher" path="C:\Users\intel\AndroidStudioProjects\ShahiCripto\app\src\main\res\mipmap-mdpi\ic_launcher.webp" qualifiers="mdpi-v4" type="mipmap"/><file name="ic_launcher_round" path="C:\Users\intel\AndroidStudioProjects\ShahiCripto\app\src\main\res\mipmap-mdpi\ic_launcher_round.webp" qualifiers="mdpi-v4" type="mipmap"/><file name="ic_launcher" path="C:\Users\intel\AndroidStudioProjects\ShahiCripto\app\src\main\res\mipmap-xhdpi\ic_launcher.webp" qualifiers="xhdpi-v4" type="mipmap"/><file name="ic_launcher_round" path="C:\Users\intel\AndroidStudioProjects\ShahiCripto\app\src\main\res\mipmap-xhdpi\ic_launcher_round.webp" qualifiers="xhdpi-v4" type="mipmap"/><file name="ic_launcher" path="C:\Users\intel\AndroidStudioProjects\ShahiCripto\app\src\main\res\mipmap-xxhdpi\ic_launcher.webp" qualifiers="xxhdpi-v4" type="mipmap"/><file name="ic_launcher_round" path="C:\Users\intel\AndroidStudioProjects\ShahiCripto\app\src\main\res\mipmap-xxhdpi\ic_launcher_round.webp" qualifiers="xxhdpi-v4" type="mipmap"/><file name="ic_launcher" path="C:\Users\intel\AndroidStudioProjects\ShahiCripto\app\src\main\res\mipmap-xxxhdpi\ic_launcher.webp" qualifiers="xxxhdpi-v4" type="mipmap"/><file name="ic_launcher_round" path="C:\Users\intel\AndroidStudioProjects\ShahiCripto\app\src\main\res\mipmap-xxxhdpi\ic_launcher_round.webp" qualifiers="xxxhdpi-v4" type="mipmap"/><file path="C:\Users\intel\AndroidStudioProjects\ShahiCripto\app\src\main\res\values\colors.xml" qualifiers=""><color name="black">#FF000000</color><color name="white">#FFFFFFFF</color><color name="colorPrimary">#28334a</color><color name="colorAccent">#148bee</color><color name="colorPrimaryDark">#212b40</color><color name="backgroundColor">#212b40</color><color name="primaryTextColor">#ffffff</color><color name="secondaryTextColor">#8c8c8c</color><color name="tertiaryTextColor">#7e8795</color><color name="colorPrimaryDusk">#3c4862</color><color name="colorLoss">#f0655e</color><color name="colorGain">#50b12a</color><color name="quaternaryTextColo">#b9b9b9</color><color name="cerise">#da0e86</color><color name="bubble_gum_pink">#ff5ba4</color></file><file path="C:\Users\intel\AndroidStudioProjects\ShahiCripto\app\src\main\res\values\strings.xml" qualifiers=""><string name="app_name">CryptoPedia</string><string name="period_1h">12H</string><string name="period_1day">1D</string><string name="period_1week">1W</string><string name="period_1month">1M</string><string name="period_3month">3M</string><string name="period_1year">1Y</string><string name="period_all">ALL</string></file><file path="C:\Users\intel\AndroidStudioProjects\ShahiCripto\app\src\main\res\values\themes.xml" qualifiers=""><style name="Base.Theme.ShahiCrypto" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+
+        
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryVariant">@color/colorPrimaryDark</item>
+        <item name="colorOnPrimary">@color/primaryTextColor</item>
+        
+        <item name="colorSecondary">@color/colorAccent</item>
+        <item name="colorOnSecondary">@color/primaryTextColor</item>
+        
+        <item name="android:statusBarColor" ns1:targetApi="l">?attr/colorPrimaryVariant</item>
+        
+        <item name="android:windowBackground">@color/backgroundColor</item>
+        <item name="fontFamily">sans-serif-medium</item>
+        <item name="spark_SparkViewStyle">@style/MySparkViewStyle</item>
+
+    </style><style name="Theme.ShahiCrypto" parent="Base.Theme.ShahiCrypto"/><style name="CoinBitText" parent="Base.TextAppearance.AppCompat.Caption">
+        <item name="android:lineSpacingExtra">4sp</item>
+    </style><style name="CoinBitText.CaptionSmall" parent="CoinBitText">
+        <item name="android:textColor">@color/primaryTextColor</item>
+        <item name="android:textSize">10sp</item>
+    </style><style name="CoinBitText.Caption" parent="CoinBitText">
+        <item name="android:textColor">@color/primaryTextColor</item>
+        <item name="android:textSize">12sp</item>
+    </style><style name="CoinBitText.CaptionAlternate" parent="CoinBitText">
+        <item name="android:textColor">@color/secondaryTextColor</item>
+        <item name="android:textSize">12sp</item>
+    </style><style name="CoinBitText.Title" parent="CoinBitText">
+        <item name="android:textColor">@color/primaryTextColor</item>
+        <item name="android:textSize">14sp</item>
+    </style><style name="CoinBitText.TitleAlternate" parent="CoinBitText">
+        <item name="android:textColor">@color/secondaryTextColor</item>
+        <item name="android:textSize">14sp</item>
+    </style><style name="CoinBitText.Body" parent="CoinBitText">
+        <item name="android:textColor">@color/primaryTextColor</item>
+        <item name="android:textSize">18sp</item>
+    </style><style name="CoinBitText.BodyAlternate" parent="CoinBitText">
+        <item name="android:textColor">@color/tertiaryTextColor</item>
+        <item name="android:textSize">18sp</item>
+    </style><style name="CoinBitText.BodyTertiary" parent="CoinBitText">
+        <item name="android:textColor">@color/tertiaryTextColor</item>
+        <item name="android:textSize">18sp</item>
+    </style><style name="CoinBitText.Body1" parent="CoinBitText">
+        <item name="android:textColor">@color/primaryTextColor</item>
+        <item name="android:textSize">16sp</item>
+    </style><style name="CoinBitText.Body1Alternate" parent="CoinBitText">
+        <item name="android:textColor">@color/secondaryTextColor</item>
+        <item name="android:textSize">16sp</item>
+    </style><style name="CoinBitText.Body2" parent="CoinBitText">
+        <item name="android:textColor">@color/primaryTextColor</item>
+        <item name="android:textSize">20sp</item>
+    </style><style name="CoinBitText.Body3" parent="CoinBitText">
+        <item name="android:textColor">@color/primaryTextColor</item>
+        <item name="android:textSize">24sp</item>
+    </style><style name="CoinBitText.Big" parent="CoinBitText">
+        <item name="android:textColor">@color/primaryTextColor</item>
+        <item name="android:textSize">34sp</item>
+    </style><style name="CoinBitText.Huge" parent="CoinBitText">
+        <item name="android:textColor">@color/primaryTextColor</item>
+        <item name="android:textSize">42sp</item>
+    </style><style name="MySparkViewStyle" parent="spark_SparkView">
+        <item name="spark_lineColor">@color/colorPrimary</item>
+        <item name="spark_lineWidth">3dp</item>
+        <item name="spark_fill">false</item>
+        <item name="spark_baseLineColor">@color/colorPrimary</item>
+    </style></file><file name="backup_rules" path="C:\Users\intel\AndroidStudioProjects\ShahiCripto\app\src\main\res\xml\backup_rules.xml" qualifiers="" type="xml"/><file name="data_extraction_rules" path="C:\Users\intel\AndroidStudioProjects\ShahiCripto\app\src\main\res\xml\data_extraction_rules.xml" qualifiers="" type="xml"/><file name="crypto_pedia" path="C:\Users\intel\AndroidStudioProjects\ShahiCripto\app\src\main\res\drawable\crypto_pedia.png" qualifiers="" type="drawable"/></source></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="debug$Generated" generated="true" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="C:\Users\intel\AndroidStudioProjects\ShahiCripto\app\src\debug\res"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="debug" generated-set="debug$Generated" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="C:\Users\intel\AndroidStudioProjects\ShahiCripto\app\src\debug\res"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="generated$Generated" generated="true" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="C:\Users\intel\AndroidStudioProjects\ShahiCripto\app\build\generated\res\resValues\debug"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="generated" generated-set="generated$Generated" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="C:\Users\intel\AndroidStudioProjects\ShahiCripto\app\build\generated\res\resValues\debug"/></dataSet><mergedItems/></merger>
