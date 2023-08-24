@@ -1,4 +1,4 @@
-#Tue Aug 22 01:14:52 GMT+03:30 2023
+#Tue Aug 22 01:48:10 GMT+03:30 2023
 base.0=C\:\\Users\\intel\\AndroidStudioProjects\\ShahiCripto\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
 base.1=C\:\\Users\\intel\\AndroidStudioProjects\\ShahiCripto\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
 base.2=C\:\\Users\\intel\\AndroidStudioProjects\\ShahiCripto\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\14\\classes.dex

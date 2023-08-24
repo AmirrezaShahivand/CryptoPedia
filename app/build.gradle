@@ -24,8 +24,7 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled true
-            shrinkResources true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -64,6 +63,5 @@ dependencies {
     // sweet alert dialog =>
     // Adding Sweet Alert Library
     implementation 'com.github.f0ris.sweetalert:library:1.6.2'
-
 
 }
