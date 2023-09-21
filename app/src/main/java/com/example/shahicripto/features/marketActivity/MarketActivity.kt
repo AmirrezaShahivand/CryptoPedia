@@ -13,6 +13,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.shahicripto.NetworkChecker
 import com.example.shahicripto.apiManager.ApiManager
+import com.example.shahicripto.apiManager.disposable
 import com.example.shahicripto.apiManager.model.CoinAboutData
 import com.example.shahicripto.apiManager.model.CoinAboutItem
 import com.example.shahicripto.apiManager.model.CoinsData
@@ -167,5 +168,10 @@ class MarketActivity : AppCompatActivity(), MarketAdapter.RecyclerCallback {
         startActivity(intent)
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        disposable.dispose()
+
+    }
 
 }

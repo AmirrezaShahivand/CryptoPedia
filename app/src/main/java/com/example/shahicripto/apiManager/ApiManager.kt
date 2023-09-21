@@ -1,17 +1,25 @@
 package com.example.shahicripto.apiManager
 
+import android.util.Log
 import com.example.shahicripto.apiManager.model.ChartData
 import com.example.shahicripto.apiManager.model.CoinsData
 import com.example.shahicripto.apiManager.model.NewsData
+import io.reactivex.Scheduler
+import io.reactivex.SingleObserver
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.Disposable
+import io.reactivex.schedulers.Schedulers
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
-
+lateinit var disposable: Disposable
 class ApiManager {
     private val apiService: ApiService
+
 
     init {
 
@@ -19,6 +27,7 @@ class ApiManager {
             .Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .build()
 
         apiService = retrofit.create(ApiService::class.java)
@@ -54,18 +63,25 @@ class ApiManager {
 
     fun getCoinsList(apiCallback: ApiCallback<List<CoinsData.Data>>) {
 
-        apiService.getTopCoins().enqueue(object : Callback<CoinsData> {
-            override fun onResponse(call: Call<CoinsData>, response: Response<CoinsData>) {
-                val data = response.body()!!
-                apiCallback.onSuccess(data.data)
-            }
+        apiService.getTopCoins()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(object :SingleObserver<CoinsData>{
+                override fun onSubscribe(d: Disposable) {
+                disposable = d
+                }
 
-            override fun onFailure(call: Call<CoinsData>, t: Throwable) {
-                apiCallback.onError(t.message!!)
-            }
+                override fun onError(e: Throwable) {
+                    Log.v("test" , e.message!!)
+                    apiCallback.onError(e.message!!)
+                }
 
-        })
+                override fun onSuccess(t: CoinsData) {
+                    val data = t.data
+                    apiCallback.onSuccess(data)
+                }
 
+            })
     }
 
     fun getChartData(

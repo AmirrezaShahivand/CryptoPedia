@@ -3,6 +3,7 @@ package com.example.shahicripto.apiManager
 import com.example.shahicripto.apiManager.model.ChartData
 import com.example.shahicripto.apiManager.model.CoinsData
 import com.example.shahicripto.apiManager.model.NewsData
+import io.reactivex.Single
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Headers
@@ -21,7 +22,7 @@ interface ApiService {
     fun getTopCoins(
         @Query("tsym") to_symbol : String = "USDT" ,
         @Query("limit") limit_data : Int = 35
-        ):retrofit2.Call<CoinsData>
+        ):Single<CoinsData>
 
 
     @Headers(API_KEY)
