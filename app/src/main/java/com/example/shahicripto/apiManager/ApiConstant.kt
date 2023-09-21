@@ -19,4 +19,4 @@ const val MONTH3 = "3 month"
 const val YEAR = "1 year"
 const val ALL = "ALL"
 const val TEST = "test"
-
+const val TEST2 = "test2"
