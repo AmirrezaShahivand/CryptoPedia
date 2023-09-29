@@ -31,10 +31,10 @@
         android:testOnly="true"
         android:theme="@style/Theme.ShahiCrypto" >
         <activity
-            android:name="com.example.shahicripto.features.coinActivity.CoinActivity"
+            android:name="com.example.shahicripto.features.coinScreen.CoinActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.shahicripto.features.marketActivity.MarketActivity"
+            android:name="com.example.shahicripto.features.marketScreen.MarketActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
