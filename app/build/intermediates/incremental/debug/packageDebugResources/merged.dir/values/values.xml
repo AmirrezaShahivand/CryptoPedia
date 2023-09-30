@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="http://schemas.android.com/tools">
+    <color name="backgroundColor">#212b40</color>
+    <color name="black">#FF000000</color>
+    <color name="bubble_gum_pink">#ff5ba4</color>
+    <color name="cerise">#da0e86</color>
+    <color name="colorAccent">#148bee</color>
+    <color name="colorGain">#50b12a</color>
+    <color name="colorLoss">#f0655e</color>
+    <color name="colorPrimary">#28334a</color>
+    <color name="colorPrimaryDark">#212b40</color>
+    <color name="colorPrimaryDusk">#3c4862</color>
+    <color name="primaryTextColor">#ffffff</color>
+    <color name="quaternaryTextColo">#b9b9b9</color>
+    <color name="secondaryTextColor">#8c8c8c</color>
+    <color name="tertiaryTextColor">#7e8795</color>
+    <color name="white">#FFFFFFFF</color>
+    <string name="app_name">CryptoPedia</string>
+    <string name="period_1day">1D</string>
+    <string name="period_1h">12H</string>
+    <string name="period_1month">1M</string>
+    <string name="period_1week">1W</string>
+    <string name="period_1year">1Y</string>
+    <string name="period_3month">3M</string>
+    <string name="period_all">ALL</string>
+    <style name="Base.Theme.ShahiCrypto" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+
+        
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryVariant">@color/colorPrimaryDark</item>
+        <item name="colorOnPrimary">@color/primaryTextColor</item>
+        
+        <item name="colorSecondary">@color/colorAccent</item>
+        <item name="colorOnSecondary">@color/primaryTextColor</item>
+        
+        <item name="android:statusBarColor" ns1:targetApi="l">?attr/colorPrimaryVariant</item>
+        
+        <item name="android:windowBackground">@color/backgroundColor</item>
+        <item name="fontFamily">sans-serif-medium</item>
+        <item name="spark_SparkViewStyle">@style/MySparkViewStyle</item>
+
+    </style>
+    <style name="CoinBitText" parent="Base.TextAppearance.AppCompat.Caption">
+        <item name="android:lineSpacingExtra">4sp</item>
+    </style>
+    <style name="CoinBitText.Big" parent="CoinBitText">
+        <item name="android:textColor">@color/primaryTextColor</item>
+        <item name="android:textSize">34sp</item>
+    </style>
+    <style name="CoinBitText.Body" parent="CoinBitText">
+        <item name="android:textColor">@color/primaryTextColor</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+    <style name="CoinBitText.Body1" parent="CoinBitText">
+        <item name="android:textColor">@color/primaryTextColor</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+    <style name="CoinBitText.Body1Alternate" parent="CoinBitText">
+        <item name="android:textColor">@color/secondaryTextColor</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+    <style name="CoinBitText.Body2" parent="CoinBitText">
+        <item name="android:textColor">@color/primaryTextColor</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+    <style name="CoinBitText.Body3" parent="CoinBitText">
+        <item name="android:textColor">@color/primaryTextColor</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+    <style name="CoinBitText.BodyAlternate" parent="CoinBitText">
+        <item name="android:textColor">@color/tertiaryTextColor</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+    <style name="CoinBitText.BodyTertiary" parent="CoinBitText">
+        <item name="android:textColor">@color/tertiaryTextColor</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+    <style name="CoinBitText.Caption" parent="CoinBitText">
+        <item name="android:textColor">@color/primaryTextColor</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+    <style name="CoinBitText.CaptionAlternate" parent="CoinBitText">
+        <item name="android:textColor">@color/secondaryTextColor</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+    <style name="CoinBitText.CaptionSmall" parent="CoinBitText">
+        <item name="android:textColor">@color/primaryTextColor</item>
+        <item name="android:textSize">10sp</item>
+    </style>
+    <style name="CoinBitText.Huge" parent="CoinBitText">
+        <item name="android:textColor">@color/primaryTextColor</item>
+        <item name="android:textSize">42sp</item>
+    </style>
+    <style name="CoinBitText.Title" parent="CoinBitText">
+        <item name="android:textColor">@color/primaryTextColor</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+    <style name="CoinBitText.TitleAlternate" parent="CoinBitText">
+        <item name="android:textColor">@color/secondaryTextColor</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+    <style name="MySparkViewStyle" parent="spark_SparkView">
+        <item name="spark_lineColor">@color/colorPrimary</item>
+        <item name="spark_lineWidth">3dp</item>
+        <item name="spark_fill">false</item>
+        <item name="spark_baseLineColor">@color/colorPrimary</item>
+    </style>
+    <style name="Theme.ShahiCrypto" parent="Base.Theme.ShahiCrypto"/>
+</resources>
