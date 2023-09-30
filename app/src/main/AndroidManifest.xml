@@ -16,10 +16,10 @@
         android:theme="@style/Theme.ShahiCrypto"
         tools:targetApi="33">
         <activity
-            android:name=".features.coinActivity.CoinActivity"
+            android:name=".features.coinScreen.CoinActivity"
             android:exported="false" />
         <activity
-            android:name=".features.marketActivity.MarketActivity"
+            android:name=".features.marketScreen.MarketActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
