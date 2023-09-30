@@ -165,10 +165,10 @@ class MarketActivity : AppCompatActivity(), MarketAdapter.RecyclerCallback {
 
                 override fun onError(e: Throwable) {
                     Log.v("error2" , e.message.toString())
+                    internetChecker(this@MarketActivity)
                 }
 
                 override fun onSuccess(t: CoinsData) {
-                    val coinsList : ArrayList<CoinsData> = arrayListOf()
                    showDataINRecycler(t.data)
 
                 }
@@ -200,7 +200,7 @@ class MarketActivity : AppCompatActivity(), MarketAdapter.RecyclerCallback {
 
     override fun onDestroy() {
         super.onDestroy()
-        disposable.dispose()
+        compositeDisposable.clear()
 
     }
 

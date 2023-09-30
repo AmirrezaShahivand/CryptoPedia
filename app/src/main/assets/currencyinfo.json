@@ -3463,6 +3463,7 @@
     "info": {
       "desc": "USDC is a fully collateralized US dollar stablecoin. USDC is the bridge between dollars and trading on cryptocurrency exchanges. The technology behind CENTRE makes it possible to exchange value between people, businesses and financial institutions just like email between mail services and texts between SMS providers. We believe by removing artificial economic borders, we can create a more inclusive global economy. ",
       "web": "https://www.circle.com/en/usdc",
+      "twt" : "",
       "github": "https://github.com/centrehq/centre-tokens",
       "reddit" : ""
     }
@@ -3730,7 +3731,8 @@
       "web": "https://www.clapclaptoken.com/",
       "twt": "ClapClapToken",
       "reddit": "",
-      "forum": ""
+      "forum": "",
+      "github" : ""
     }
   },
   {
@@ -23384,7 +23386,8 @@
       "web": "https://appos-t.com/",
       "twt": "",
       "reddit": "",
-      "forum": ""
+      "forum": "",
+      "github" : ""
     }
   },
   {

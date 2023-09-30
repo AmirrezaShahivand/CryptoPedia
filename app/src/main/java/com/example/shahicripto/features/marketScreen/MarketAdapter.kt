@@ -22,7 +22,7 @@ class MarketAdapter(
 
         @SuppressLint("SetTextI18n")
         fun bindView(dataCoin: CoinsData.Data) {
-            binding.txtNameCoin.text = dataCoin.coinInfo.name ?: "null"
+            binding.txtNameCoin.text = dataCoin.coinInfo.name
             binding.txtPrice.text = dataCoin.dISPLAY.uSDT.pRICE
 
 
@@ -43,7 +43,7 @@ class MarketAdapter(
                         R.color.colorLoss
                     )
                 )
-                binding.txtTaghir.text = dataCoin.dISPLAY.uSDT.cHANGEPCT24HOUR.substring(0, 5)+ "%"
+                binding.txtTaghir.text = dataCoin.dISPLAY.uSDT.cHANGEPCT24HOUR.substring(0, 4)+ "%"
             } else {
                 binding.txtTaghir.text = "0%"
             }

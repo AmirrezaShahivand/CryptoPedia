@@ -79,26 +79,26 @@ class CoinActivity : AppCompatActivity() {
         binding.about.txtSomeData.text = dataThisCoinAbout.coinDesc
 
 
-        if (dataThisCoinAbout.coinWebsite == ""){
+        if (dataThisCoinAbout.coinWebsite == "" ){
             binding.about.txtWebsite.text = "no-data"
         }else{
             binding.about.txtWebsite.text = dataThisCoinAbout.coinWebsite
         }
 
-        if (dataThisCoinAbout.coinGithub == ""){
+        if (dataThisCoinAbout.coinGithub == ""  ){
             binding.about.txtGithub.text = "no-data"
         }else{
             binding.about.txtGithub.text = dataThisCoinAbout.coinGithub
         }
 
-        if (dataThisCoinAbout.coinReddit == ""){
+        if (dataThisCoinAbout.coinReddit == "" ){
             binding.about.txtReddit.text = "no-data"
         }else{
             binding.about.txtReddit.text = dataThisCoinAbout.coinReddit
         }
 
         if (dataThisCoinAbout.coinX == aboutItem.coinX.toString() || dataThisCoinAbout.coinX == "" ) {
-            binding.about.txtX.text =  dataThisCoinAbout.coinX
+            binding.about.txtX.text =  "no_data"
         } else {
             binding.about.txtX.text = "@" + dataThisCoinAbout.coinX
         }
@@ -310,5 +310,10 @@ class CoinActivity : AppCompatActivity() {
 
             })
 
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        compositeDisposable.clear()
     }
 }
