@@ -15,11 +15,13 @@ import com.example.shahicripto.util.MONTH
 import com.example.shahicripto.util.MONTH3
 import com.example.shahicripto.util.WEEK
 import com.example.shahicripto.util.YEAR
-import com.example.shahicripto.apiManager.model.ChartData
-import com.example.shahicripto.apiManager.model.CoinAboutItem
-import com.example.shahicripto.apiManager.model.CoinsData
-import com.example.shahicripto.apiManager.model.MainRepository
+import com.example.shahicripto.model.local.ChartData
+import com.example.shahicripto.model.local.CoinAboutItem
+import com.example.shahicripto.model.local.CoinsData.CoinsData
+import com.example.shahicripto.model.MainRepository
 import com.example.shahicripto.databinding.ActivityCoinBinding
+import com.example.shahicripto.model.local.CoinsData.CoinsDataDao
+import com.example.shahicripto.util.ApiServiceSingleton
 import com.example.shahicripto.util.asyncRequest
 import io.reactivex.SingleObserver
 import io.reactivex.disposables.CompositeDisposable
@@ -37,7 +39,7 @@ class CoinActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityCoinBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        chartScreenViewModel = ChartScreenViewModel(MainRepository())
+
 
 //        dataThisCoin = intent.getParcelableExtra<CoinsData.Data>("sendToData")!!
         val fromIntent = intent.getBundleExtra("bundle")!!

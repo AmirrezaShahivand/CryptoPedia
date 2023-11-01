@@ -1,9 +1,8 @@
 package com.example.shahicripto.features.coinScreen
 
-import com.example.shahicripto.apiManager.model.ChartData
-import com.example.shahicripto.apiManager.model.MainRepository
+import com.example.shahicripto.model.local.ChartData
+import com.example.shahicripto.model.MainRepository
 import io.reactivex.Single
-import io.reactivex.SingleObserver
 
 class ChartScreenViewModel(private val mainRepository: MainRepository)  {
 

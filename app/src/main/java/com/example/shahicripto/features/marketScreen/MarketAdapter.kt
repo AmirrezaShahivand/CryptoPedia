@@ -9,11 +9,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.shahicripto.R
 import com.example.shahicripto.util.BASE_URL_IMAGE
-import com.example.shahicripto.apiManager.model.CoinsData
+import com.example.shahicripto.model.local.CoinsData.CoinsData
 import com.example.shahicripto.databinding.ItemRecyclerMarketBinding
+import com.example.shahicripto.model.local.CoinsData.CoinsDataEntitity
 
 class MarketAdapter(
-    private val data: ArrayList<CoinsData.Data>,
+    private val data: ArrayList<CoinsDataEntitity>,
     private val recyclerCallback: RecyclerCallback
 ) : RecyclerView.Adapter<MarketAdapter.MarketViewHolder>() {
     lateinit var binding: ItemRecyclerMarketBinding
@@ -21,12 +22,12 @@ class MarketAdapter(
     inner class MarketViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         @SuppressLint("SetTextI18n")
-        fun bindView(dataCoin: CoinsData.Data) {
-            binding.txtNameCoin.text = dataCoin.coinInfo.name
-            binding.txtPrice.text = dataCoin.dISPLAY.uSDT.pRICE
+        fun bindView(dataCoin: CoinsDataEntitity) {
+            binding.txtNameCoin.text = dataCoin.name
+            binding.txtPrice.text = dataCoin.price
 
 
-            val taghir = dataCoin.rAW.uSDT.cHANGE24HOUR
+            val taghir = dataCoin.change
 
             if (taghir > 0) {
                 binding.txtTaghir.setTextColor(
@@ -35,7 +36,7 @@ class MarketAdapter(
                         R.color.colorGain
                     )
                 )
-                binding.txtTaghir.text = dataCoin.dISPLAY.uSDT.cHANGEPCT24HOUR.substring(0, 4) + "%"
+                binding.txtTaghir.text = dataCoin.change.toString().substring(0, 4) + "%"
             } else if (taghir < 0) {
                 binding.txtTaghir.setTextColor(
                     ContextCompat.getColor(
@@ -43,13 +44,13 @@ class MarketAdapter(
                         R.color.colorLoss
                     )
                 )
-                binding.txtTaghir.text = dataCoin.dISPLAY.uSDT.cHANGEPCT24HOUR.substring(0, 4)+ "%"
+                binding.txtTaghir.text = dataCoin.change.toString().substring(0, 4)+ "%"
             } else {
                 binding.txtTaghir.text = "0%"
             }
 
 
-            val hajm = dataCoin.rAW.uSDT.mKTCAP / 1000000000
+            val hajm = dataCoin.hajm / 1000000000
             val indexDot = hajm.toString().indexOf('.')
             binding.txtHajm.text = hajm.toString().substring(0, indexDot + 2) + "B"
 
@@ -60,7 +61,7 @@ class MarketAdapter(
 
             Glide
                 .with(itemView)
-                .load(BASE_URL_IMAGE + dataCoin.coinInfo.imageUrl)
+                .load(BASE_URL_IMAGE + dataCoin.url)
                 .into(binding.imgCoin)
 
             itemView.setOnClickListener {
@@ -89,7 +90,7 @@ class MarketAdapter(
 
 
     interface RecyclerCallback {
-        fun onItemClicked(dataCoin: CoinsData.Data)
+        fun onItemClicked(dataCoin: CoinsDataEntitity)
 
     }
 

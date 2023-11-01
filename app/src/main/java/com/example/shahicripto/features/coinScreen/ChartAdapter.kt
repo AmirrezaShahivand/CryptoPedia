@@ -1,9 +1,9 @@
 package com.example.shahicripto.features.coinScreen
 
-import com.example.shahicripto.apiManager.model.ChartData
+import com.example.shahicripto.model.local.ChartData
 import com.robinhood.spark.SparkAdapter
 
-class ChartAdapter(private val historicalData : List<ChartData.Data> , private val baseLine : String?):SparkAdapter() {
+class ChartAdapter(private val historicalData : List<ChartData.Data>, private val baseLine : String?):SparkAdapter() {
     override fun getCount(): Int {
       return historicalData.size
     }

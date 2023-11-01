@@ -2,11 +2,12 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id "kotlin-parcelize"
+    id 'kotlin-kapt'
 }
 
 android {
     namespace 'com.example.shahicripto'
-    compileSdk 33
+    compileSdk 34
 
     buildFeatures {
         viewBinding true
@@ -15,12 +16,14 @@ android {
     defaultConfig {
         applicationId "com.example.shahicripto"
         minSdk 24
-        targetSdk 33
-        versionCode 3
-        versionName "1.0.0"
+        targetSdk 34
+        versionCode 4
+        versionName "1.0.1"
+
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+
 
     buildTypes {
         release {
@@ -29,13 +32,19 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = '17'
     }
+
 }
+
+
+
+
+
 
 dependencies {
 
@@ -47,10 +56,11 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
+
     // server =>
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
-     implementation("com.squareup.retrofit2:adapter-rxjava2:2.9.0")
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.9.0'
 
     // show chart =>
     implementation 'com.robinhood.spark:spark:1.2.0'
@@ -69,5 +79,10 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
     implementation 'io.reactivex.rxjava2:rxjava:2.2.6'
 
+    //room =>
+    //ROOM
+    implementation "androidx.room:room-runtime:2.4.2"
+    annotationProcessor "androidx.room:room-compiler:2.4.2"
+    kapt 'androidx.room:room-compiler:2.4.2'
 
 }

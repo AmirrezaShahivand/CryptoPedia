@@ -10,23 +10,23 @@ import android.os.Looper
 import android.util.Log
 import cn.pedant.SweetAlert.SweetAlertDialog
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.shahicripto.util.NetworkChecker
-import com.example.shahicripto.apiManager.model.disposable
-import com.example.shahicripto.apiManager.model.CoinAboutData
-import com.example.shahicripto.apiManager.model.CoinAboutItem
-import com.example.shahicripto.apiManager.model.CoinsData
-import com.example.shahicripto.apiManager.model.MainRepository
-import com.example.shahicripto.apiManager.model.NewsData
+import com.example.shahicripto.model.local.CoinAboutData
+import com.example.shahicripto.model.local.CoinAboutItem
+import com.example.shahicripto.model.MainRepository
+import com.example.shahicripto.model.local.NewsData.NewsData
 import com.example.shahicripto.databinding.ActivityMarketBinding
-import com.example.shahicripto.features.coinScreen.CoinActivity
+import com.example.shahicripto.model.MyDatabase
+import com.example.shahicripto.model.local.CoinsData.CoinsDataEntitity
+import com.example.shahicripto.util.ApiServiceSingleton
+import com.example.shahicripto.util.MarketViewModelFactory
 import com.example.shahicripto.util.asyncRequest
-import com.example.shahicripto.util.showToast
 import com.google.gson.Gson
 import io.reactivex.SingleObserver
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
-import kotlin.math.log
 
 class MarketActivity : AppCompatActivity(), MarketAdapter.RecyclerCallback {
     lateinit var binding: ActivityMarketBinding
@@ -39,7 +39,15 @@ class MarketActivity : AppCompatActivity(), MarketAdapter.RecyclerCallback {
         super.onCreate(savedInstanceState)
         binding = ActivityMarketBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        marketScreenViewModel = MarketScreenViewModel(MainRepository())
+        marketScreenViewModel = ViewModelProvider(
+            this,
+            MarketViewModelFactory(
+                MainRepository(
+                    ApiServiceSingleton.apiService!!,
+                    MyDatabase.getDatabase(applicationContext).studentDao
+                )
+            )
+        ).get(MarketScreenViewModel::class.java)
 
         binding.layoutWatchlist.btnShowMore.setOnClickListener {
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://coinmarketcap.com/"))
@@ -110,7 +118,7 @@ class MarketActivity : AppCompatActivity(), MarketAdapter.RecyclerCallback {
     private fun initUi() {
 
         getNewsFromApi()
-        getTopCoinsFromApi()
+        getTopCoinsDataBase()
 
     }
 
@@ -119,25 +127,25 @@ class MarketActivity : AppCompatActivity(), MarketAdapter.RecyclerCallback {
         marketScreenViewModel
             .getTopNewsFromApi()
             .asyncRequest()
-            .subscribe(object : SingleObserver<NewsData>{
-            override fun onSubscribe(d: Disposable) {
-                compositeDisposable.add(d)
-            }
-
-            override fun onError(e: Throwable) {
-                Log.v("error1" , e.message.toString())
-            }
-
-            override fun onSuccess(t: NewsData) {
-                val dataToSend: ArrayList<Pair<String, String>> = arrayListOf()
-                t.data.forEach {
-                    dataToSend.add(Pair(it.title, it.url))
+            .subscribe(object : SingleObserver<NewsData> {
+                override fun onSubscribe(d: Disposable) {
+                    compositeDisposable.add(d)
                 }
-                dataNews = dataToSend
-                refreshNews()
-            }
 
-        })
+                override fun onError(e: Throwable) {
+                    Log.v("error1", e.message.toString())
+                }
+
+                override fun onSuccess(t: NewsData) {
+                    val dataToSend: ArrayList<Pair<String, String>> = arrayListOf()
+                    t.data.forEach {
+                        dataToSend.add(Pair(it.title, it.url))
+                    }
+                    dataNews = dataToSend
+                    refreshNews()
+                }
+
+            })
 
     }
 
@@ -154,30 +162,24 @@ class MarketActivity : AppCompatActivity(), MarketAdapter.RecyclerCallback {
     }
 
 
-    private fun getTopCoinsFromApi() {
+    private fun getTopCoinsDataBase() {
+
+        marketScreenViewModel.refreshData()
+
         marketScreenViewModel
-            .getTopCoinsFromApi()
-            .asyncRequest()
-            .subscribe(object : SingleObserver<CoinsData>{
-                override fun onSubscribe(d: Disposable) {
-                    compositeDisposable.add(d)
-                }
+            .getTopCoinsFromDataBase()
+            .observe(this) {
+                showDataINRecycler(it)
+            }
 
-                override fun onError(e: Throwable) {
-                    Log.v("error2" , e.message.toString())
-                    internetChecker(this@MarketActivity)
-                }
-
-                override fun onSuccess(t: CoinsData) {
-                   showDataINRecycler(t.data)
-
-                }
-
-            })
+        marketScreenViewModel.getErrorData().observe(this) {
+            Log.e("testLog" , it)
+        }
 
     }
 
-    private fun showDataINRecycler(data: List<CoinsData.Data>) {
+    private fun showDataINRecycler(data: List<CoinsDataEntitity>) {
+
 
         val marketAdapter = MarketAdapter(ArrayList(data), this)
 
@@ -186,17 +188,17 @@ class MarketActivity : AppCompatActivity(), MarketAdapter.RecyclerCallback {
 
     }
 
-    override fun onItemClicked(dataCoin: CoinsData.Data) {
-
-        val intent = Intent(this, CoinActivity::class.java)
-//        intent.putExtra("sendToData", dataCoin)
-        val bundle = Bundle()
-        bundle.putParcelable("bundle1", dataCoin)
-        bundle.putParcelable("bundle2", aboutDataMap[dataCoin.coinInfo.name])
-        intent.putExtra("bundle", bundle)
-
-        startActivity(intent)
-    }
+    override fun onItemClicked(dataCoin: CoinsDataEntitity) {
+//
+//        val intent = Intent(this, CoinActivity::class.java)
+////        intent.putExtra("sendToData", dataCoin)
+//        val bundle = Bundle()
+//        bundle.putParcelable("bundle1", dataCoin)
+//        bundle.putParcelable("bundle2", aboutDataMap[dataCoin.coinInfo.name])
+//        intent.putExtra("bundle", bundle)
+//
+//        startActivity(intent)
+  }
 
     override fun onDestroy() {
         super.onDestroy()
