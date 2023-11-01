@@ -19,6 +19,8 @@ import androidx.sqlite.db.SupportSQLiteOpenHelper.Callback;
 import androidx.sqlite.db.SupportSQLiteOpenHelper.Configuration;
 import com.example.shahicripto.model.local.CoinsData.CoinsDataDao;
 import com.example.shahicripto.model.local.CoinsData.CoinsDataDao_Impl;
+import com.example.shahicripto.model.local.NewsData.NewsDataDao;
+import com.example.shahicripto.model.local.NewsData.NewsDataDao_Impl;
 import java.lang.Class;
 import java.lang.Override;
 import java.lang.String;
@@ -36,19 +38,23 @@ import javax.annotation.processing.Generated;
 public final class MyDatabase_Impl extends MyDatabase {
   private volatile CoinsDataDao _coinsDataDao;
 
+  private volatile NewsDataDao _newsDataDao;
+
   @Override
   protected SupportSQLiteOpenHelper createOpenHelper(DatabaseConfiguration configuration) {
-    final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(configuration, new RoomOpenHelper.Delegate(1) {
+    final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(configuration, new RoomOpenHelper.Delegate(2) {
       @Override
       public void createAllTables(SupportSQLiteDatabase _db) {
         _db.execSQL("CREATE TABLE IF NOT EXISTS `CoinsDataEntitity` (`name` TEXT NOT NULL, `price` TEXT NOT NULL, `change` REAL NOT NULL, `hajm` REAL NOT NULL, `url` TEXT NOT NULL, PRIMARY KEY(`name`))");
+        _db.execSQL("CREATE TABLE IF NOT EXISTS `NewsDataEntity` (`title` TEXT NOT NULL, `url` TEXT NOT NULL, PRIMARY KEY(`title`))");
         _db.execSQL("CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
-        _db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '941c9ffbcc472a55ce7df8b972d68a72')");
+        _db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'b56101c47f10ab27443ae7423cc44c89')");
       }
 
       @Override
       public void dropAllTables(SupportSQLiteDatabase _db) {
         _db.execSQL("DROP TABLE IF EXISTS `CoinsDataEntitity`");
+        _db.execSQL("DROP TABLE IF EXISTS `NewsDataEntity`");
         if (mCallbacks != null) {
           for (int _i = 0, _size = mCallbacks.size(); _i < _size; _i++) {
             mCallbacks.get(_i).onDestructiveMigration(_db);
@@ -102,9 +108,21 @@ public final class MyDatabase_Impl extends MyDatabase {
                   + " Expected:\n" + _infoCoinsDataEntitity + "\n"
                   + " Found:\n" + _existingCoinsDataEntitity);
         }
+        final HashMap<String, TableInfo.Column> _columnsNewsDataEntity = new HashMap<String, TableInfo.Column>(2);
+        _columnsNewsDataEntity.put("title", new TableInfo.Column("title", "TEXT", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsNewsDataEntity.put("url", new TableInfo.Column("url", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        final HashSet<TableInfo.ForeignKey> _foreignKeysNewsDataEntity = new HashSet<TableInfo.ForeignKey>(0);
+        final HashSet<TableInfo.Index> _indicesNewsDataEntity = new HashSet<TableInfo.Index>(0);
+        final TableInfo _infoNewsDataEntity = new TableInfo("NewsDataEntity", _columnsNewsDataEntity, _foreignKeysNewsDataEntity, _indicesNewsDataEntity);
+        final TableInfo _existingNewsDataEntity = TableInfo.read(_db, "NewsDataEntity");
+        if (! _infoNewsDataEntity.equals(_existingNewsDataEntity)) {
+          return new RoomOpenHelper.ValidationResult(false, "NewsDataEntity(com.example.shahicripto.model.local.NewsData.NewsDataEntity).\n"
+                  + " Expected:\n" + _infoNewsDataEntity + "\n"
+                  + " Found:\n" + _existingNewsDataEntity);
+        }
         return new RoomOpenHelper.ValidationResult(true, null);
       }
-    }, "941c9ffbcc472a55ce7df8b972d68a72", "a9b2f06fd82deaf770fa7f7da76c8d31");
+    }, "b56101c47f10ab27443ae7423cc44c89", "bb0ce97e46f3be96f1a495a77f8e1ebd");
     final SupportSQLiteOpenHelper.Configuration _sqliteConfig = SupportSQLiteOpenHelper.Configuration.builder(configuration.context)
         .name(configuration.name)
         .callback(_openCallback)
@@ -117,7 +135,7 @@ public final class MyDatabase_Impl extends MyDatabase {
   protected InvalidationTracker createInvalidationTracker() {
     final HashMap<String, String> _shadowTablesMap = new HashMap<String, String>(0);
     HashMap<String, Set<String>> _viewTables = new HashMap<String, Set<String>>(0);
-    return new InvalidationTracker(this, _shadowTablesMap, _viewTables, "CoinsDataEntitity");
+    return new InvalidationTracker(this, _shadowTablesMap, _viewTables, "CoinsDataEntitity","NewsDataEntity");
   }
 
   @Override
@@ -127,6 +145,7 @@ public final class MyDatabase_Impl extends MyDatabase {
     try {
       super.beginTransaction();
       _db.execSQL("DELETE FROM `CoinsDataEntitity`");
+      _db.execSQL("DELETE FROM `NewsDataEntity`");
       super.setTransactionSuccessful();
     } finally {
       super.endTransaction();
@@ -141,6 +160,7 @@ public final class MyDatabase_Impl extends MyDatabase {
   protected Map<Class<?>, List<Class<?>>> getRequiredTypeConverters() {
     final HashMap<Class<?>, List<Class<?>>> _typeConvertersMap = new HashMap<Class<?>, List<Class<?>>>();
     _typeConvertersMap.put(CoinsDataDao.class, CoinsDataDao_Impl.getRequiredConverters());
+    _typeConvertersMap.put(NewsDataDao.class, NewsDataDao_Impl.getRequiredConverters());
     return _typeConvertersMap;
   }
 
@@ -157,7 +177,7 @@ public final class MyDatabase_Impl extends MyDatabase {
   }
 
   @Override
-  public CoinsDataDao getStudentDao() {
+  public CoinsDataDao getCoinsDataDao() {
     if (_coinsDataDao != null) {
       return _coinsDataDao;
     } else {
@@ -166,6 +186,20 @@ public final class MyDatabase_Impl extends MyDatabase {
           _coinsDataDao = new CoinsDataDao_Impl(this);
         }
         return _coinsDataDao;
+      }
+    }
+  }
+
+  @Override
+  public NewsDataDao getNewsDataDao() {
+    if (_newsDataDao != null) {
+      return _newsDataDao;
+    } else {
+      synchronized(this) {
+        if(_newsDataDao == null) {
+          _newsDataDao = new NewsDataDao_Impl(this);
+        }
+        return _newsDataDao;
       }
     }
   }

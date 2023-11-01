@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.example.shahicripto.model.MainRepository
 import com.example.shahicripto.model.local.CoinsData.CoinsDataEntitity
 import com.example.shahicripto.model.local.NewsData.NewsData
+import com.example.shahicripto.model.local.NewsData.NewsDataEntity
 import io.reactivex.CompletableObserver
 import io.reactivex.Single
 import io.reactivex.disposables.Disposable
@@ -18,7 +19,7 @@ class MarketScreenViewModel(private val mainRepository: MainRepository) : ViewMo
         return mainRepository.getCoinsList()
     }
 
-    fun getTopNewsFromApi(): Single<NewsData> {
+    fun getTopNewsFromDataBase(): LiveData<List<NewsDataEntity>> {
         return mainRepository.getNews()
     }
 
@@ -58,6 +59,23 @@ class MarketScreenViewModel(private val mainRepository: MainRepository) : ViewMo
 
                 override fun onComplete() {
 
+                }
+
+                override fun onError(e: Throwable) {
+                    errorData.postValue(e.message ?: "unknown error")
+                }
+
+            })
+
+        mainRepository
+            .refreshDataNews()
+            .subscribeOn(Schedulers.io())
+            .subscribe(object : CompletableObserver{
+                override fun onSubscribe(d: Disposable) {
+                    netDisposable = d
+                }
+
+                override fun onComplete() {
                 }
 
                 override fun onError(e: Throwable) {

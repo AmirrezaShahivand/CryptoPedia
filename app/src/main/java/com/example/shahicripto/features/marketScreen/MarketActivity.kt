@@ -44,7 +44,8 @@ class MarketActivity : AppCompatActivity(), MarketAdapter.RecyclerCallback {
             MarketViewModelFactory(
                 MainRepository(
                     ApiServiceSingleton.apiService!!,
-                    MyDatabase.getDatabase(applicationContext).studentDao
+                    MyDatabase.getDatabase(applicationContext).coinsDataDao,
+                    MyDatabase.getDatabase(applicationContext).newsDataDao
                 )
             )
         ).get(MarketScreenViewModel::class.java)
@@ -124,30 +125,22 @@ class MarketActivity : AppCompatActivity(), MarketAdapter.RecyclerCallback {
 
     private fun getNewsFromApi() {
 
+
         marketScreenViewModel
-            .getTopNewsFromApi()
-            .asyncRequest()
-            .subscribe(object : SingleObserver<NewsData> {
-                override fun onSubscribe(d: Disposable) {
-                    compositeDisposable.add(d)
-                }
+            .getTopNewsFromDataBase()
+            .observe(this) {
 
-                override fun onError(e: Throwable) {
-                    Log.v("error1", e.message.toString())
-                }
+                val dataToSend: ArrayList<Pair<String, String>> = arrayListOf()
 
-                override fun onSuccess(t: NewsData) {
-                    val dataToSend: ArrayList<Pair<String, String>> = arrayListOf()
-                    t.data.forEach {
-                        dataToSend.add(Pair(it.title, it.url))
-                    }
-                    dataNews = dataToSend
-                    refreshNews()
+                it.forEach {
+                    dataToSend.add(Pair(it.title, it.url))
                 }
-
-            })
+                dataNews = dataToSend
+                refreshNews()
+            }
 
     }
+
 
     private fun refreshNews() {
         val randomAccess = (0..49).random()

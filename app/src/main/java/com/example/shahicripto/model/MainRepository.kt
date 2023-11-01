@@ -6,6 +6,8 @@ import com.example.shahicripto.model.local.ChartData
 import com.example.shahicripto.model.local.CoinsData.CoinsDataDao
 import com.example.shahicripto.model.local.CoinsData.CoinsDataEntitity
 import com.example.shahicripto.model.local.NewsData.NewsData
+import com.example.shahicripto.model.local.NewsData.NewsDataDao
+import com.example.shahicripto.model.local.NewsData.NewsDataEntity
 import com.example.shahicripto.util.ALL
 import com.example.shahicripto.util.HISTO_DAY
 import com.example.shahicripto.util.HISTO_HOUR
@@ -22,7 +24,7 @@ import io.reactivex.disposables.Disposable
 
 lateinit var disposable: Disposable
 
-class MainRepository(private val apiService: ApiService , private val coinsDataDao: CoinsDataDao) {
+class MainRepository(private val apiService: ApiService , private val coinsDataDao: CoinsDataDao , private val newsDataDao: NewsDataDao) {
 
 
     fun getCoinsList() : LiveData<List<CoinsDataEntitity>>{
@@ -39,11 +41,21 @@ class MainRepository(private val apiService: ApiService , private val coinsDataD
             }.ignoreElement()
     }
 
+    fun refreshDataNews() : Completable{
+        return apiService
+            .getTopNews()
+            .doOnSuccess {
+                it.data.forEach {
+                    newsDataDao.insertAll(NewsDataEntity(it.title , it.url))
+                }
+            }.ignoreElement()
+    }
 
 
-    fun getNews(): Single<NewsData> {
 
-        return apiService.getTopNews()
+    fun getNews(): LiveData<List<NewsDataEntity>> {
+
+        return newsDataDao.getAllNews()
 
     }
 //

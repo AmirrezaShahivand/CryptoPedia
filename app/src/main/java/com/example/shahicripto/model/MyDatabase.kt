@@ -4,16 +4,18 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.shahicripto.model.local.CoinsData.CoinsData
 import com.example.shahicripto.model.local.CoinsData.CoinsDataDao
 import com.example.shahicripto.model.local.CoinsData.CoinsDataEntitity
+import com.example.shahicripto.model.local.NewsData.NewsDataDao
+import com.example.shahicripto.model.local.NewsData.NewsDataEntity
 
 
-@Database(version = 1, exportSchema = false, entities = [CoinsDataEntitity::class])
+@Database(version = 2, exportSchema = false, entities = [CoinsDataEntitity::class , NewsDataEntity::class])
 abstract class MyDatabase : RoomDatabase() {
 
 
-    abstract val studentDao: CoinsDataDao
+    abstract val coinsDataDao: CoinsDataDao
+    abstract val newsDataDao : NewsDataDao
 
 
     companion object {
