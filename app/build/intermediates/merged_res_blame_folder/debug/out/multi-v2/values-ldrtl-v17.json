@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.shahicripto.app-mergeDebugResources-34:/values-ldrtl-v17/values-ldrtl-v17.xml",
+            "outputFile": "com.example.shahicripto.app-mergeDebugResources-38:/values-ldrtl-v17/values-ldrtl-v17.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\intel\\.gradle\\caches\\transforms-3\\a6c6f7082cb079598505fb2d08b4a96c\\transformed\\material-1.5.0\\res\\values-ldrtl-v17\\values-ldrtl-v17.xml",
+                    "source": "C:\\Users\\intel\\.gradle\\caches\\transforms-3\\2fa07c330823dcd7ae08331e3bc4254b\\transformed\\material-1.10.0\\res\\values-ldrtl-v17\\values-ldrtl-v17.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",

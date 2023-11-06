@@ -42,13 +42,13 @@ public final class MyDatabase_Impl extends MyDatabase {
 
   @Override
   protected SupportSQLiteOpenHelper createOpenHelper(DatabaseConfiguration configuration) {
-    final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(configuration, new RoomOpenHelper.Delegate(2) {
+    final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(configuration, new RoomOpenHelper.Delegate(1) {
       @Override
       public void createAllTables(SupportSQLiteDatabase _db) {
-        _db.execSQL("CREATE TABLE IF NOT EXISTS `CoinsDataEntitity` (`name` TEXT NOT NULL, `price` TEXT NOT NULL, `change` REAL NOT NULL, `hajm` REAL NOT NULL, `url` TEXT NOT NULL, PRIMARY KEY(`name`))");
+        _db.execSQL("CREATE TABLE IF NOT EXISTS `CoinsDataEntitity` (`name` TEXT NOT NULL, `price` TEXT NOT NULL, `change` REAL NOT NULL, `hajm` REAL NOT NULL, `url` TEXT NOT NULL, `oPEN24HOUR` TEXT NOT NULL, `hIGH24HOUR` TEXT NOT NULL, `lOW24HOUR` TEXT NOT NULL, `cHANGE24HOUR` TEXT NOT NULL, `algorithm` TEXT NOT NULL, `tOTALVOLUME24H` TEXT NOT NULL, `mKTCAP` TEXT NOT NULL, `sUPPLY` TEXT NOT NULL, `fullName` TEXT NOT NULL, `cHANGEPCT24HOUR` TEXT NOT NULL, `cHANGE24HOUR_RAW` REAL NOT NULL, PRIMARY KEY(`name`))");
         _db.execSQL("CREATE TABLE IF NOT EXISTS `NewsDataEntity` (`title` TEXT NOT NULL, `url` TEXT NOT NULL, PRIMARY KEY(`title`))");
         _db.execSQL("CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
-        _db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'b56101c47f10ab27443ae7423cc44c89')");
+        _db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '92c4a522c232a7dd51d0b9cfb2874961')");
       }
 
       @Override
@@ -93,12 +93,23 @@ public final class MyDatabase_Impl extends MyDatabase {
 
       @Override
       protected RoomOpenHelper.ValidationResult onValidateSchema(SupportSQLiteDatabase _db) {
-        final HashMap<String, TableInfo.Column> _columnsCoinsDataEntitity = new HashMap<String, TableInfo.Column>(5);
+        final HashMap<String, TableInfo.Column> _columnsCoinsDataEntitity = new HashMap<String, TableInfo.Column>(16);
         _columnsCoinsDataEntitity.put("name", new TableInfo.Column("name", "TEXT", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsCoinsDataEntitity.put("price", new TableInfo.Column("price", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsCoinsDataEntitity.put("change", new TableInfo.Column("change", "REAL", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsCoinsDataEntitity.put("hajm", new TableInfo.Column("hajm", "REAL", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsCoinsDataEntitity.put("url", new TableInfo.Column("url", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsCoinsDataEntitity.put("oPEN24HOUR", new TableInfo.Column("oPEN24HOUR", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsCoinsDataEntitity.put("hIGH24HOUR", new TableInfo.Column("hIGH24HOUR", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsCoinsDataEntitity.put("lOW24HOUR", new TableInfo.Column("lOW24HOUR", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsCoinsDataEntitity.put("cHANGE24HOUR", new TableInfo.Column("cHANGE24HOUR", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsCoinsDataEntitity.put("algorithm", new TableInfo.Column("algorithm", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsCoinsDataEntitity.put("tOTALVOLUME24H", new TableInfo.Column("tOTALVOLUME24H", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsCoinsDataEntitity.put("mKTCAP", new TableInfo.Column("mKTCAP", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsCoinsDataEntitity.put("sUPPLY", new TableInfo.Column("sUPPLY", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsCoinsDataEntitity.put("fullName", new TableInfo.Column("fullName", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsCoinsDataEntitity.put("cHANGEPCT24HOUR", new TableInfo.Column("cHANGEPCT24HOUR", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsCoinsDataEntitity.put("cHANGE24HOUR_RAW", new TableInfo.Column("cHANGE24HOUR_RAW", "REAL", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         final HashSet<TableInfo.ForeignKey> _foreignKeysCoinsDataEntitity = new HashSet<TableInfo.ForeignKey>(0);
         final HashSet<TableInfo.Index> _indicesCoinsDataEntitity = new HashSet<TableInfo.Index>(0);
         final TableInfo _infoCoinsDataEntitity = new TableInfo("CoinsDataEntitity", _columnsCoinsDataEntitity, _foreignKeysCoinsDataEntitity, _indicesCoinsDataEntitity);
@@ -122,7 +133,7 @@ public final class MyDatabase_Impl extends MyDatabase {
         }
         return new RoomOpenHelper.ValidationResult(true, null);
       }
-    }, "b56101c47f10ab27443ae7423cc44c89", "bb0ce97e46f3be96f1a495a77f8e1ebd");
+    }, "92c4a522c232a7dd51d0b9cfb2874961", "ed090c752d999d1c7d04cd905bef62ea");
     final SupportSQLiteOpenHelper.Configuration _sqliteConfig = SupportSQLiteOpenHelper.Configuration.builder(configuration.context)
         .name(configuration.name)
         .callback(_openCallback)

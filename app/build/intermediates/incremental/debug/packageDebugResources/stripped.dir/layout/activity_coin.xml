@@ -10,6 +10,11 @@
         layout="@layout/module_toolbar"
         android:id="@+id/layout_toolbar"/>
 
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh_main"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -19,7 +24,6 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
             <include layout="@layout/module_chart" android:id="@+id/chart"/>
             <include layout="@layout/module_statistics" android:id="@+id/statistics"/>
             <include layout="@layout/module_about" android:id="@+id/about"/>
@@ -30,6 +34,8 @@
 
 
     </androidx.core.widget.NestedScrollView>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

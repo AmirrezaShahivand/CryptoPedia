@@ -23,21 +23,42 @@ class MarketScreenViewModel(private val mainRepository: MainRepository) : ViewMo
         return mainRepository.getNews()
     }
 
-    fun getErrorData() : LiveData<String>{
+    fun getErrorData(): LiveData<String> {
         return errorData
     }
 
     fun refreshData() {
-        return mainRepository
+         mainRepository
             .refreshData()
             .subscribeOn(Schedulers.io())
             .subscribe(object : CompletableObserver {
                 override fun onSubscribe(d: Disposable) {
-                    netDisposable=d
+                    netDisposable = d
                 }
 
                 override fun onComplete() {
 
+                }
+
+                override fun onError(e: Throwable) {
+                    errorData.postValue(e.message ?: "unknown error")
+                }
+
+            })
+
+
+    }
+
+    fun refreshNews(){
+        mainRepository
+            .refreshDataNews()
+            .subscribeOn(Schedulers.io())
+            .subscribe(object : CompletableObserver {
+                override fun onSubscribe(d: Disposable) {
+                    netDisposable = d
+                }
+
+                override fun onComplete() {
                 }
 
                 override fun onError(e: Throwable) {
@@ -54,7 +75,7 @@ class MarketScreenViewModel(private val mainRepository: MainRepository) : ViewMo
             .subscribeOn(Schedulers.io())
             .subscribe(object : CompletableObserver {
                 override fun onSubscribe(d: Disposable) {
-                    netDisposable=d
+                    netDisposable = d
                 }
 
                 override fun onComplete() {
@@ -62,7 +83,7 @@ class MarketScreenViewModel(private val mainRepository: MainRepository) : ViewMo
                 }
 
                 override fun onError(e: Throwable) {
-                    errorData.postValue(e.message ?: "unknown error")
+                    errorData.postValue(e.message)
                 }
 
             })
@@ -70,7 +91,7 @@ class MarketScreenViewModel(private val mainRepository: MainRepository) : ViewMo
         mainRepository
             .refreshDataNews()
             .subscribeOn(Schedulers.io())
-            .subscribe(object : CompletableObserver{
+            .subscribe(object : CompletableObserver {
                 override fun onSubscribe(d: Disposable) {
                     netDisposable = d
                 }
@@ -79,7 +100,7 @@ class MarketScreenViewModel(private val mainRepository: MainRepository) : ViewMo
                 }
 
                 override fun onError(e: Throwable) {
-                    errorData.postValue(e.message ?: "unknown error")
+                    errorData.postValue(e.message)
                 }
 
             })

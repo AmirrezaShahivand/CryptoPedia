@@ -5,7 +5,6 @@ import com.example.shahicripto.model.api.ApiService
 import com.example.shahicripto.model.local.ChartData
 import com.example.shahicripto.model.local.CoinsData.CoinsDataDao
 import com.example.shahicripto.model.local.CoinsData.CoinsDataEntitity
-import com.example.shahicripto.model.local.NewsData.NewsData
 import com.example.shahicripto.model.local.NewsData.NewsDataDao
 import com.example.shahicripto.model.local.NewsData.NewsDataEntity
 import com.example.shahicripto.util.ALL
@@ -22,35 +21,55 @@ import io.reactivex.Completable
 import io.reactivex.Single
 import io.reactivex.disposables.Disposable
 
-lateinit var disposable: Disposable
+class MainRepository(
+    private val apiService: ApiService,
+    private val coinsDataDao: CoinsDataDao,
+    private val newsDataDao: NewsDataDao
+) {
 
-class MainRepository(private val apiService: ApiService , private val coinsDataDao: CoinsDataDao , private val newsDataDao: NewsDataDao) {
 
-
-    fun getCoinsList() : LiveData<List<CoinsDataEntitity>>{
+    fun getCoinsList(): LiveData<List<CoinsDataEntitity>> {
         return coinsDataDao.getAllCoins()
     }
 
-    fun refreshData() : Completable{
+    fun refreshData(): Completable {
         return apiService
             .getTopCoins()
             .doOnSuccess {
                 it.data.forEach {
-                    coinsDataDao.insertAll(CoinsDataEntitity(it.coinInfo.name , it.dISPLAY.uSDT.pRICE , it.rAW.uSDT.cHANGEPCT24HOUR, it.rAW.uSDT.mKTCAP , it.coinInfo.imageUrl ))
+                    coinsDataDao.insertAll(
+                        CoinsDataEntitity(
+                            it.coinInfo.name,
+                            it.dISPLAY.uSDT.pRICE,
+                            it.rAW.uSDT.cHANGEPCT24HOUR,
+                            it.rAW.uSDT.mKTCAP,
+                            it.coinInfo.imageUrl,
+                            it.dISPLAY.uSDT.oPEN24HOUR,
+                            it.dISPLAY.uSDT.hIGH24HOUR,
+                            it.dISPLAY.uSDT.lOW24HOUR,
+                            it.dISPLAY.uSDT.cHANGE24HOUR,
+                            it.coinInfo.algorithm,
+                            it.dISPLAY.uSDT.tOTALVOLUME24H,
+                            it.dISPLAY.uSDT.mKTCAP,
+                            it.dISPLAY.uSDT.sUPPLY,
+                            it.coinInfo.fullName,
+                            it.dISPLAY.uSDT.cHANGEPCT24HOUR,
+                            it.rAW.uSDT.cHANGE24HOUR
+                        )
+                    )
                 }
             }.ignoreElement()
     }
 
-    fun refreshDataNews() : Completable{
+    fun refreshDataNews(): Completable {
         return apiService
             .getTopNews()
             .doOnSuccess {
                 it.data.forEach {
-                    newsDataDao.insertAll(NewsDataEntity(it.title , it.url))
+                    newsDataDao.insertAll(NewsDataEntity(it.title, it.url))
                 }
             }.ignoreElement()
     }
-
 
 
     fun getNews(): LiveData<List<NewsDataEntity>> {
@@ -58,12 +77,7 @@ class MainRepository(private val apiService: ApiService , private val coinsDataD
         return newsDataDao.getAllNews()
 
     }
-//
-//    fun getCoinsList(): Single<CoinsData> {
-//
-//        return apiService.getTopCoins()
-//
-//    }
+
 
     fun getChartData(
         symbol: String,
@@ -121,11 +135,5 @@ class MainRepository(private val apiService: ApiService , private val coinsDataD
 
     }
 
-    interface ApiCallback<T> {
-
-        fun onSuccess(data: T)
-        fun onError(errorMessage: String)
-
-    }
 
 }

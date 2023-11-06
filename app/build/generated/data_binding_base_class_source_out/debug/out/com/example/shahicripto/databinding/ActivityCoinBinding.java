@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.example.shahicripto.R;
@@ -30,14 +31,19 @@ public final class ActivityCoinBinding implements ViewBinding {
   @NonNull
   public final ModuleStatisticsBinding statistics;
 
+  @NonNull
+  public final SwipeRefreshLayout swipeRefreshMain;
+
   private ActivityCoinBinding(@NonNull CoordinatorLayout rootView,
       @NonNull ModuleAboutBinding about, @NonNull ModuleChartBinding chart,
-      @NonNull ModuleToolbarBinding layoutToolbar, @NonNull ModuleStatisticsBinding statistics) {
+      @NonNull ModuleToolbarBinding layoutToolbar, @NonNull ModuleStatisticsBinding statistics,
+      @NonNull SwipeRefreshLayout swipeRefreshMain) {
     this.rootView = rootView;
     this.about = about;
     this.chart = chart;
     this.layoutToolbar = layoutToolbar;
     this.statistics = statistics;
+    this.swipeRefreshMain = swipeRefreshMain;
   }
 
   @Override
@@ -95,8 +101,14 @@ public final class ActivityCoinBinding implements ViewBinding {
       }
       ModuleStatisticsBinding binding_statistics = ModuleStatisticsBinding.bind(statistics);
 
+      id = R.id.swipe_refresh_main;
+      SwipeRefreshLayout swipeRefreshMain = ViewBindings.findChildViewById(rootView, id);
+      if (swipeRefreshMain == null) {
+        break missingId;
+      }
+
       return new ActivityCoinBinding((CoordinatorLayout) rootView, binding_about, binding_chart,
-          binding_layoutToolbar, binding_statistics);
+          binding_layoutToolbar, binding_statistics, swipeRefreshMain);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

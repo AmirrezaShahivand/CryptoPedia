@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.shahicripto.app-mergeDebugResources-34:/values-v16/values-v16.xml",
+            "outputFile": "com.example.shahicripto.app-mergeDebugResources-38:/values-v16/values-v16.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\intel\\.gradle\\caches\\transforms-3\\99267641611e7b73ecb79a66b8fc82ad\\transformed\\core-1.9.0\\res\\values-v16\\values-v16.xml",
+                    "source": "C:\\Users\\intel\\.gradle\\caches\\transforms-3\\74cad5bd3cd20b067513092238897cdf\\transformed\\core-1.12.0\\res\\values-v16\\values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

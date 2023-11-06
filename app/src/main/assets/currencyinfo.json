@@ -13900,7 +13900,8 @@
       "web": "https://filecoin.io/",
       "twt": "minefilecoin",
       "reddit": "https://www.reddit.com/r/filecoin",
-      "forum": ""
+      "forum": "",
+      "github" : ""
     }
   },
   {
@@ -14786,7 +14787,12 @@
   {
     "currencyName": "ATOM",
     "info": {
-      "desc": "Live Atomic Coin prices from all markets and ATOM coin market Capitalization. Stay up to date with the latest Atomic Coin price movements and forum discussion. Check out our snapshot charts and see when there is an opportunity to buy or sell."
+      "desc": "Live Atomic Coin prices from all markets and ATOM coin market Capitalization. Stay up to date with the latest Atomic Coin price movements and forum discussion. Check out our snapshot charts and see when there is an opportunity to buy or sell.",
+      "web": "https://cosmos.network",
+      "twt": "cosmoszr",
+      "reddit": "https://www.reddit.com/r/Atom",
+      "forum": "",
+      "github": "https://github.com/verifyas/atom"
     }
   },
   {

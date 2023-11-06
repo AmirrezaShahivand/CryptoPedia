@@ -10,7 +10,7 @@ import com.example.shahicripto.model.local.NewsData.NewsDataDao
 import com.example.shahicripto.model.local.NewsData.NewsDataEntity
 
 
-@Database(version = 2, exportSchema = false, entities = [CoinsDataEntitity::class , NewsDataEntity::class])
+@Database(version = 1, exportSchema = false, entities = [CoinsDataEntitity::class , NewsDataEntity::class])
 abstract class MyDatabase : RoomDatabase() {
 
 

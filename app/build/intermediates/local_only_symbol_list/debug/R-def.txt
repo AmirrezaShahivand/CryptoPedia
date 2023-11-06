@@ -2,6 +2,8 @@ R_DEF: Internal format may change without notice
 local
 color backgroundColor
 color black
+color blue
+color blueDark
 color bubble_gum_pink
 color cerise
 color colorAccent
@@ -10,11 +12,14 @@ color colorLoss
 color colorPrimary
 color colorPrimaryDark
 color colorPrimaryDusk
+color orange
+color orangeDark
 color primaryTextColor
 color quaternaryTextColo
 color secondaryTextColor
 color tertiaryTextColor
 color white
+color yellow
 drawable background_rounded_all
 drawable button_back
 drawable crypto_pedia
@@ -90,6 +95,7 @@ layout module_statistics
 layout module_toolbar
 layout module_watchlist
 mipmap ic_launcher
+mipmap ic_launcher_foreground
 mipmap ic_launcher_round
 string app_name
 string period_1day
