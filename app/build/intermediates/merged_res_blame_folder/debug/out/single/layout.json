@@ -1,38 +1,38 @@
 [
     {
-        "merged": "com.example.shahicripto.app-mergeDebugResources-39:/layout/module_about.xml",
-        "source": "com.example.shahicripto.app-main-42:/layout/module_about.xml"
+        "merged": "com.example.shahicripto.app-mergeDebugResources-49:/layout/module_chart.xml",
+        "source": "com.example.shahicripto.app-main-52:/layout/module_chart.xml"
     },
     {
-        "merged": "com.example.shahicripto.app-mergeDebugResources-39:/layout/module_chart.xml",
-        "source": "com.example.shahicripto.app-main-42:/layout/module_chart.xml"
+        "merged": "com.example.shahicripto.app-mergeDebugResources-49:/layout/activity_market.xml",
+        "source": "com.example.shahicripto.app-main-52:/layout/activity_market.xml"
     },
     {
-        "merged": "com.example.shahicripto.app-mergeDebugResources-39:/layout/module_statistics.xml",
-        "source": "com.example.shahicripto.app-main-42:/layout/module_statistics.xml"
+        "merged": "com.example.shahicripto.app-mergeDebugResources-49:/layout/module_watchlist.xml",
+        "source": "com.example.shahicripto.app-main-52:/layout/module_watchlist.xml"
     },
     {
-        "merged": "com.example.shahicripto.app-mergeDebugResources-39:/layout/module_toolbar.xml",
-        "source": "com.example.shahicripto.app-main-42:/layout/module_toolbar.xml"
+        "merged": "com.example.shahicripto.app-mergeDebugResources-49:/layout/module_toolbar.xml",
+        "source": "com.example.shahicripto.app-main-52:/layout/module_toolbar.xml"
     },
     {
-        "merged": "com.example.shahicripto.app-mergeDebugResources-39:/layout/module_watchlist.xml",
-        "source": "com.example.shahicripto.app-main-42:/layout/module_watchlist.xml"
+        "merged": "com.example.shahicripto.app-mergeDebugResources-49:/layout/activity_coin.xml",
+        "source": "com.example.shahicripto.app-main-52:/layout/activity_coin.xml"
     },
     {
-        "merged": "com.example.shahicripto.app-mergeDebugResources-39:/layout/activity_coin.xml",
-        "source": "com.example.shahicripto.app-main-42:/layout/activity_coin.xml"
+        "merged": "com.example.shahicripto.app-mergeDebugResources-49:/layout/item_recycler_market.xml",
+        "source": "com.example.shahicripto.app-main-52:/layout/item_recycler_market.xml"
     },
     {
-        "merged": "com.example.shahicripto.app-mergeDebugResources-39:/layout/module_news.xml",
-        "source": "com.example.shahicripto.app-main-42:/layout/module_news.xml"
+        "merged": "com.example.shahicripto.app-mergeDebugResources-49:/layout/module_news.xml",
+        "source": "com.example.shahicripto.app-main-52:/layout/module_news.xml"
     },
     {
-        "merged": "com.example.shahicripto.app-mergeDebugResources-39:/layout/activity_market.xml",
-        "source": "com.example.shahicripto.app-main-42:/layout/activity_market.xml"
+        "merged": "com.example.shahicripto.app-mergeDebugResources-49:/layout/module_about.xml",
+        "source": "com.example.shahicripto.app-main-52:/layout/module_about.xml"
     },
     {
-        "merged": "com.example.shahicripto.app-mergeDebugResources-39:/layout/item_recycler_market.xml",
-        "source": "com.example.shahicripto.app-main-42:/layout/item_recycler_market.xml"
+        "merged": "com.example.shahicripto.app-mergeDebugResources-49:/layout/module_statistics.xml",
+        "source": "com.example.shahicripto.app-main-52:/layout/module_statistics.xml"
     }
 ]

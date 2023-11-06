@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.shahicripto.app-mergeDebugResources-38:/values-h550dp-port-v13/values-h550dp-port-v13.xml",
+            "outputFile": "com.example.shahicripto.app-mergeDebugResources-48:/values-h550dp-port-v13/values-h550dp-port-v13.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\intel\\.gradle\\caches\\transforms-3\\2fa07c330823dcd7ae08331e3bc4254b\\transformed\\material-1.10.0\\res\\values-h550dp-port-v13\\values-h550dp-port-v13.xml",
+                    "source": "C:\\Users\\intel\\.gradle\\caches\\transforms-3\\32791aac034c1dc765cdfa05a9fcf789\\transformed\\material-1.10.0\\res\\values-h550dp-port-v13\\values-h550dp-port-v13.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

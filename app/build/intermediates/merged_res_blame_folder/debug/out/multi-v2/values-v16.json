@@ -1,20 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.shahicripto.app-mergeDebugResources-38:/values-v16/values-v16.xml",
+            "outputFile": "com.example.shahicripto.app-mergeDebugResources-48:/values-v16/values-v16.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\intel\\.gradle\\caches\\transforms-3\\74cad5bd3cd20b067513092238897cdf\\transformed\\core-1.12.0\\res\\values-v16\\values-v16.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "65",
-                        "endOffsets": "116"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\intel\\.gradle\\caches\\transforms-3\\e876af2cadb85a95704607b7897b766c\\transformed\\appcompat-1.6.1\\res\\values-v16\\values-v16.xml",
+                    "source": "C:\\Users\\intel\\.gradle\\caches\\transforms-3\\021cc8a022ac67be0e707ee747a37b36\\transformed\\appcompat-1.6.1\\res\\values-v16\\values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -30,6 +20,16 @@
                         "endLines": "6",
                         "endColumns": "12",
                         "endOffsets": "289"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\intel\\.gradle\\caches\\transforms-3\\31f0a6f454de197fa46c1accf74d6931\\transformed\\core-1.12.0\\res\\values-v16\\values-v16.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "65",
+                        "endOffsets": "116"
                     }
                 }
             ]

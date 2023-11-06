@@ -21,6 +21,11 @@
     <color name="white">#FFFFFFFF</color>
     <color name="yellow">#F9A825</color>
     <string name="app_name">CryptoPedia</string>
+    <string name="gcm_defaultSenderId" translatable="false">618910639135</string>
+    <string name="google_api_key" translatable="false">AIzaSyBO0FigNVgRou6E3hv-dhSfXgdw9QlcIAE</string>
+    <string name="google_app_id" translatable="false">1:618910639135:android:96f7e061bc488616b5a12a</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyBO0FigNVgRou6E3hv-dhSfXgdw9QlcIAE</string>
+    <string name="google_storage_bucket" translatable="false">shahicripto-11bec.appspot.com</string>
     <string name="period_1day">1D</string>
     <string name="period_1h">12H</string>
     <string name="period_1month">1M</string>
@@ -28,6 +33,7 @@
     <string name="period_1year">1Y</string>
     <string name="period_3month">3M</string>
     <string name="period_all">ALL</string>
+    <string name="project_id" translatable="false">shahicripto-11bec</string>
     <style name="Base.Theme.ShahiCrypto" parent="Theme.MaterialComponents.DayNight.NoActionBar">
 
         

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "618910639135",
+    "project_id": "shahicripto-11bec",
+    "storage_bucket": "shahicripto-11bec.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:618910639135:android:96f7e061bc488616b5a12a",
+        "android_client_info": {
+          "package_name": "com.example.shahicripto"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBO0FigNVgRou6E3hv-dhSfXgdw9QlcIAE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

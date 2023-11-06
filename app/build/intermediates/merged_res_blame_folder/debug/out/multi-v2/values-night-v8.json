@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.shahicripto.app-mergeDebugResources-38:/values-night-v8/values-night-v8.xml",
+            "outputFile": "com.example.shahicripto.app-mergeDebugResources-48:/values-night-v8/values-night-v8.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\intel\\.gradle\\caches\\transforms-3\\e876af2cadb85a95704607b7897b766c\\transformed\\appcompat-1.6.1\\res\\values-night-v8\\values-night-v8.xml",
+                    "source": "C:\\Users\\intel\\.gradle\\caches\\transforms-3\\021cc8a022ac67be0e707ee747a37b36\\transformed\\appcompat-1.6.1\\res\\values-night-v8\\values-night-v8.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\intel\\.gradle\\caches\\transforms-3\\2fa07c330823dcd7ae08331e3bc4254b\\transformed\\material-1.10.0\\res\\values-night-v8\\values-night-v8.xml",
+                    "source": "C:\\Users\\intel\\.gradle\\caches\\transforms-3\\32791aac034c1dc765cdfa05a9fcf789\\transformed\\material-1.10.0\\res\\values-night-v8\\values-night-v8.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
