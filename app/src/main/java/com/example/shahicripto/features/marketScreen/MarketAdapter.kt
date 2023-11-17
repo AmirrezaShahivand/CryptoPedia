@@ -7,17 +7,24 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.RequestManager
 import com.example.shahicripto.R
 import com.example.shahicripto.util.BASE_URL_IMAGE
 import com.example.shahicripto.model.local.CoinsData.CoinsData
 import com.example.shahicripto.databinding.ItemRecyclerMarketBinding
 import com.example.shahicripto.model.local.CoinsData.CoinsDataEntitity
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
+
 
 class MarketAdapter(
+    private val glide: RequestManager ,
     private val data: ArrayList<CoinsDataEntitity>,
     private val recyclerCallback: RecyclerCallback
 ) : RecyclerView.Adapter<MarketAdapter.MarketViewHolder>() {
     lateinit var binding: ItemRecyclerMarketBinding
+
+
 
     inner class MarketViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
@@ -58,11 +65,15 @@ class MarketAdapter(
 
 
 
-
-            Glide
-                .with(itemView)
+            // Hilt =>
+            glide
                 .load(BASE_URL_IMAGE + dataCoin.url)
                 .into(binding.imgCoin)
+
+//            Glide
+//                .with(itemView)
+//                .load(BASE_URL_IMAGE + dataCoin.url)
+//                .into(binding.imgCoin)
 
             itemView.setOnClickListener {
                 recyclerCallback.onItemClicked(dataCoin)

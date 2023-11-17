@@ -12,6 +12,7 @@ import cn.pedant.SweetAlert.SweetAlertDialog
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.RequestManager
 import com.example.shahicripto.util.NetworkChecker
 import com.example.shahicripto.model.local.CoinAboutData
 import com.example.shahicripto.model.local.CoinAboutItem
@@ -19,24 +20,24 @@ import com.example.shahicripto.model.MainRepository
 import com.example.shahicripto.databinding.ActivityMarketBinding
 import com.example.shahicripto.features.coinScreen.CoinActivity
 import com.example.shahicripto.model.MyDatabase
+import com.example.shahicripto.model.api.ApiService
 import com.example.shahicripto.model.local.CoinsData.CoinsDataEntitity
-import com.example.shahicripto.model.local.NewsData.NewsData
-import com.example.shahicripto.model.local.NewsData.NewsDataEntity
-import com.example.shahicripto.util.ApiServiceSingleton
 import com.example.shahicripto.util.MarketViewModelFactory
-import com.example.shahicripto.util.asyncRequest
-import com.example.shahicripto.util.showToast
 import com.google.gson.Gson
-import io.reactivex.SingleObserver
+import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.disposables.Disposable
-import java.lang.Exception
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class MarketActivity : AppCompatActivity(), MarketAdapter.RecyclerCallback {
     lateinit var binding: ActivityMarketBinding
     lateinit var marketScreenViewModel: MarketScreenViewModel
     lateinit var dataNews: ArrayList<Pair<String, String>>
     lateinit var aboutDataMap: MutableMap<String, CoinAboutItem>
+    @Inject
+    lateinit var glide: RequestManager
+    @Inject
+    lateinit var apiService: ApiService
     private val compositeDisposable = CompositeDisposable()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,7 +48,7 @@ class MarketActivity : AppCompatActivity(), MarketAdapter.RecyclerCallback {
             this,
             MarketViewModelFactory(
                 MainRepository(
-                    ApiServiceSingleton.apiService!!,
+                    apiService,
                     MyDatabase.getDatabase(applicationContext).coinsDataDao,
                     MyDatabase.getDatabase(applicationContext).newsDataDao
                 )
@@ -192,7 +193,7 @@ class MarketActivity : AppCompatActivity(), MarketAdapter.RecyclerCallback {
     private fun showDataINRecycler(data: List<CoinsDataEntitity>) {
 
 
-        val marketAdapter = MarketAdapter(ArrayList(data), this)
+        val marketAdapter = MarketAdapter(glide , ArrayList(data), this)
 
         binding.layoutWatchlist.recyclerMarket.adapter = marketAdapter
         binding.layoutWatchlist.recyclerMarket.layoutManager = LinearLayoutManager(this)

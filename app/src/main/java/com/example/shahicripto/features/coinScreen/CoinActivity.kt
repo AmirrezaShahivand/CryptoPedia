@@ -20,26 +20,29 @@ import com.example.shahicripto.util.WEEK
 import com.example.shahicripto.util.YEAR
 import com.example.shahicripto.model.local.ChartData
 import com.example.shahicripto.model.local.CoinAboutItem
-import com.example.shahicripto.model.local.CoinsData.CoinsData
 import com.example.shahicripto.model.MainRepository
 import com.example.shahicripto.databinding.ActivityCoinBinding
 import com.example.shahicripto.model.MyDatabase
-import com.example.shahicripto.model.local.CoinsData.CoinsDataDao
+import com.example.shahicripto.model.api.ApiService
 import com.example.shahicripto.model.local.CoinsData.CoinsDataEntitity
-import com.example.shahicripto.util.ApiServiceSingleton
 import com.example.shahicripto.util.ChartViewModelFactory
 import com.example.shahicripto.util.X
 import com.example.shahicripto.util.asyncRequest
 import com.example.shahicripto.util.showToast
+import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.SingleObserver
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class CoinActivity : AppCompatActivity() {
     lateinit var binding: ActivityCoinBinding
     lateinit var dataThisCoin: CoinsDataEntitity
     lateinit var dataThisCoinAbout: CoinAboutItem
     lateinit var chartScreenViewModel: ChartScreenViewModel
+    @Inject
+    lateinit var apiService: ApiService
     val compositeDisposable = CompositeDisposable()
 
 
@@ -51,7 +54,7 @@ class CoinActivity : AppCompatActivity() {
             this,
             ChartViewModelFactory(
                 MainRepository(
-                    ApiServiceSingleton.apiService!!,
+                    apiService,
                     MyDatabase.getDatabase(applicationContext).coinsDataDao,
                     MyDatabase.getDatabase(applicationContext).newsDataDao
                 )
