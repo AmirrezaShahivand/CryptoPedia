@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
 import androidx.lifecycle.ViewModelProvider
 import cn.pedant.SweetAlert.SweetAlertDialog
 import com.example.shahicripto.R
@@ -33,6 +34,8 @@ import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.SingleObserver
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
+import www.sanju.motiontoast.MotionToast
+import www.sanju.motiontoast.MotionToastStyle
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -41,6 +44,7 @@ class CoinActivity : AppCompatActivity() {
     lateinit var dataThisCoin: CoinsDataEntitity
     lateinit var dataThisCoinAbout: CoinAboutItem
     lateinit var chartScreenViewModel: ChartScreenViewModel
+
     @Inject
     lateinit var apiService: ApiService
     val compositeDisposable = CompositeDisposable()
@@ -71,7 +75,7 @@ class CoinActivity : AppCompatActivity() {
 
 //        dataThisCoin = intent.getParcelableExtra<CoinsData.Data>("sendToData")!!
         val fromIntent = intent.getBundleExtra("bundle")!!
-        dataThisCoin = fromIntent.getParcelable("bundle1" )!!
+        dataThisCoin = fromIntent.getParcelable("bundle1")!!
         if (fromIntent.getParcelable<CoinAboutItem>("bundle2") != null) {
             dataThisCoinAbout = fromIntent.getParcelable("bundle2")!!
         } else {
@@ -122,7 +126,7 @@ class CoinActivity : AppCompatActivity() {
             binding.about.txtGithub.text = dataThisCoinAbout.coinGithub
         }
 
-        if (dataThisCoinAbout.coinReddit == "" ) {
+        if (dataThisCoinAbout.coinReddit == "") {
             binding.about.txtReddit.text = "no-data"
         } else {
             binding.about.txtReddit.text = dataThisCoinAbout.coinReddit
@@ -327,7 +331,24 @@ class CoinActivity : AppCompatActivity() {
 
                 override fun onError(e: Throwable) {
 //                    onBackPressed()
-                    showToast("لطفا اینترنت خود را متصل نمایید")
+                    // showToast("لطفا اینترنت خود را متصل نمایید")
+
+                    Handler(Looper.getMainLooper()).postDelayed({
+
+                        MotionToast.darkColorToast(
+                            this@CoinActivity, "connection failed!",
+                            "لطفا اینترنت خود را متصل نمایید",
+                            MotionToastStyle.ERROR,
+                            MotionToast.GRAVITY_BOTTOM,
+                            MotionToast.LONG_DURATION,
+                            ResourcesCompat.getFont(
+                                this@CoinActivity,
+                                www.sanju.motiontoast.R.font.helvetica_regular
+                            )
+                        )
+
+                    }, 1000)
+
                 }
 
                 override fun onSuccess(t: ChartData) {

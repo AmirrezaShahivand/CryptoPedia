@@ -10,9 +10,11 @@ import android.os.Looper
 import android.util.Log
 import cn.pedant.SweetAlert.SweetAlertDialog
 import android.widget.Toast
+import androidx.core.content.res.ResourcesCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.RequestManager
+import com.example.shahicripto.R
 import com.example.shahicripto.util.NetworkChecker
 import com.example.shahicripto.model.local.CoinAboutData
 import com.example.shahicripto.model.local.CoinAboutItem
@@ -26,7 +28,10 @@ import com.example.shahicripto.util.MarketViewModelFactory
 import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.disposables.CompositeDisposable
+import www.sanju.motiontoast.MotionToast
+import www.sanju.motiontoast.MotionToastStyle
 import javax.inject.Inject
+import www.sanju.motiontoast.MotionToast.Companion as MotionToast1
 
 @AndroidEntryPoint
 class MarketActivity : AppCompatActivity(), MarketAdapter.RecyclerCallback {
@@ -93,9 +98,21 @@ class MarketActivity : AppCompatActivity(), MarketAdapter.RecyclerCallback {
         if (NetworkChecker(context).isInternetConnected) {
 
         } else {
-            Toast.makeText(this, "لطفا اینترنت خود را متصل نمایید!", Toast.LENGTH_SHORT).show()
+        //    Toast.makeText(this, "لطفا اینترنت خود را متصل نمایید!", Toast.LENGTH_SHORT).show()
+
+            Handler(Looper.getMainLooper()).postDelayed({
+                MotionToast.darkColorToast(this,"connection failed!",
+                    "لطفا اینترنت خود را متصل نمایید",
+                    MotionToastStyle.ERROR,
+                    MotionToast.GRAVITY_BOTTOM,
+                    MotionToast.LONG_DURATION,
+                    ResourcesCompat.getFont(this, www.sanju.motiontoast.R.font.helvetica_regular))
+            }, 1000)
+
+
+
         }
-    }
+        }
 
     private fun getAboutDataFromAssest() {
 
