@@ -4218,7 +4218,12 @@
   {
     "currencyName": "TIA",
     "info": {
-      "desc": "Live Tianhe prices from all markets and TIA coin market Capitalization. Stay up to date with the latest Tianhe price movements and forum discussion. Check out our snapshot charts and see when there is an opportunity to buy or sell."
+      "desc": "Live Tianhe prices from all markets and TIA coin market Capitalization. Stay up to date with the latest Tianhe price movements and forum discussion. Check out our snapshot charts and see when there is an opportunity to buy or sell.",
+      "web": "https://tiamonds.com/tiatoken",
+      "twt": "Tiamonds",
+      "reddit": "",
+      "forum": "",
+      "github": ""
     }
   },
   {
