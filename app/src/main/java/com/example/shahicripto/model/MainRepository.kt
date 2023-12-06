@@ -66,7 +66,7 @@ class MainRepository(
             .getTopNews()
             .doOnSuccess {
                 it.data.forEach {
-                    newsDataDao.insertAll(NewsDataEntity(it.title, it.url))
+                    newsDataDao.insertAll(NewsDataEntity(it.title, it.url , it.imageurl , it.body))
                 }
             }.ignoreElement()
     }

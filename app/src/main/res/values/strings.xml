@@ -7,4 +7,6 @@
     <string name="period_3month">3M</string>
     <string name="period_1year">1Y</string>
     <string name="period_all">ALL</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -31,7 +31,7 @@ public final class NewsDataDao_Impl implements NewsDataDao {
     this.__insertionAdapterOfNewsDataEntity = new EntityInsertionAdapter<NewsDataEntity>(__db) {
       @Override
       public String createQuery() {
-        return "INSERT OR REPLACE INTO `NewsDataEntity` (`title`,`url`) VALUES (?,?)";
+        return "INSERT OR REPLACE INTO `NewsDataEntity` (`title`,`url`,`image`,`body`) VALUES (?,?,?,?)";
       }
 
       @Override
@@ -45,6 +45,16 @@ public final class NewsDataDao_Impl implements NewsDataDao {
           stmt.bindNull(2);
         } else {
           stmt.bindString(2, value.getUrl());
+        }
+        if (value.getImage() == null) {
+          stmt.bindNull(3);
+        } else {
+          stmt.bindString(3, value.getImage());
+        }
+        if (value.getBody() == null) {
+          stmt.bindNull(4);
+        } else {
+          stmt.bindString(4, value.getBody());
         }
       }
     };
@@ -73,6 +83,8 @@ public final class NewsDataDao_Impl implements NewsDataDao {
         try {
           final int _cursorIndexOfTitle = CursorUtil.getColumnIndexOrThrow(_cursor, "title");
           final int _cursorIndexOfUrl = CursorUtil.getColumnIndexOrThrow(_cursor, "url");
+          final int _cursorIndexOfImage = CursorUtil.getColumnIndexOrThrow(_cursor, "image");
+          final int _cursorIndexOfBody = CursorUtil.getColumnIndexOrThrow(_cursor, "body");
           final List<NewsDataEntity> _result = new ArrayList<NewsDataEntity>(_cursor.getCount());
           while(_cursor.moveToNext()) {
             final NewsDataEntity _item;
@@ -88,7 +100,19 @@ public final class NewsDataDao_Impl implements NewsDataDao {
             } else {
               _tmpUrl = _cursor.getString(_cursorIndexOfUrl);
             }
-            _item = new NewsDataEntity(_tmpTitle,_tmpUrl);
+            final String _tmpImage;
+            if (_cursor.isNull(_cursorIndexOfImage)) {
+              _tmpImage = null;
+            } else {
+              _tmpImage = _cursor.getString(_cursorIndexOfImage);
+            }
+            final String _tmpBody;
+            if (_cursor.isNull(_cursorIndexOfBody)) {
+              _tmpBody = null;
+            } else {
+              _tmpBody = _cursor.getString(_cursorIndexOfBody);
+            }
+            _item = new NewsDataEntity(_tmpTitle,_tmpUrl,_tmpImage,_tmpBody);
             _result.add(_item);
           }
           return _result;

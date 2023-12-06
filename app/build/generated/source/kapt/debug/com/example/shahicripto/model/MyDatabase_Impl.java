@@ -46,9 +46,9 @@ public final class MyDatabase_Impl extends MyDatabase {
       @Override
       public void createAllTables(SupportSQLiteDatabase _db) {
         _db.execSQL("CREATE TABLE IF NOT EXISTS `CoinsDataEntitity` (`name` TEXT NOT NULL, `price` TEXT NOT NULL, `change` REAL NOT NULL, `hajm` REAL NOT NULL, `url` TEXT NOT NULL, `oPEN24HOUR` TEXT NOT NULL, `hIGH24HOUR` TEXT NOT NULL, `lOW24HOUR` TEXT NOT NULL, `cHANGE24HOUR` TEXT NOT NULL, `algorithm` TEXT NOT NULL, `tOTALVOLUME24H` TEXT NOT NULL, `mKTCAP` TEXT NOT NULL, `sUPPLY` TEXT NOT NULL, `fullName` TEXT NOT NULL, `cHANGEPCT24HOUR` TEXT NOT NULL, `cHANGE24HOUR_RAW` REAL NOT NULL, PRIMARY KEY(`name`))");
-        _db.execSQL("CREATE TABLE IF NOT EXISTS `NewsDataEntity` (`title` TEXT NOT NULL, `url` TEXT NOT NULL, PRIMARY KEY(`title`))");
+        _db.execSQL("CREATE TABLE IF NOT EXISTS `NewsDataEntity` (`title` TEXT NOT NULL, `url` TEXT NOT NULL, `image` TEXT NOT NULL, `body` TEXT NOT NULL, PRIMARY KEY(`title`))");
         _db.execSQL("CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
-        _db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '92c4a522c232a7dd51d0b9cfb2874961')");
+        _db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '363e4994fe187aaf0e958c2e8d6bcd12')");
       }
 
       @Override
@@ -119,9 +119,11 @@ public final class MyDatabase_Impl extends MyDatabase {
                   + " Expected:\n" + _infoCoinsDataEntitity + "\n"
                   + " Found:\n" + _existingCoinsDataEntitity);
         }
-        final HashMap<String, TableInfo.Column> _columnsNewsDataEntity = new HashMap<String, TableInfo.Column>(2);
+        final HashMap<String, TableInfo.Column> _columnsNewsDataEntity = new HashMap<String, TableInfo.Column>(4);
         _columnsNewsDataEntity.put("title", new TableInfo.Column("title", "TEXT", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsNewsDataEntity.put("url", new TableInfo.Column("url", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsNewsDataEntity.put("image", new TableInfo.Column("image", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsNewsDataEntity.put("body", new TableInfo.Column("body", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         final HashSet<TableInfo.ForeignKey> _foreignKeysNewsDataEntity = new HashSet<TableInfo.ForeignKey>(0);
         final HashSet<TableInfo.Index> _indicesNewsDataEntity = new HashSet<TableInfo.Index>(0);
         final TableInfo _infoNewsDataEntity = new TableInfo("NewsDataEntity", _columnsNewsDataEntity, _foreignKeysNewsDataEntity, _indicesNewsDataEntity);
@@ -133,7 +135,7 @@ public final class MyDatabase_Impl extends MyDatabase {
         }
         return new RoomOpenHelper.ValidationResult(true, null);
       }
-    }, "92c4a522c232a7dd51d0b9cfb2874961", "ed090c752d999d1c7d04cd905bef62ea");
+    }, "363e4994fe187aaf0e958c2e8d6bcd12", "545b8c1b6560062a40afc260f8957583");
     final SupportSQLiteOpenHelper.Configuration _sqliteConfig = SupportSQLiteOpenHelper.Configuration.builder(configuration.context)
         .name(configuration.name)
         .callback(_openCallback)

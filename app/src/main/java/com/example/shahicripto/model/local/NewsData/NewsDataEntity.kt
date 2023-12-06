@@ -11,5 +11,7 @@ import kotlinx.parcelize.Parcelize
 data class NewsDataEntity(
     @PrimaryKey
     val title: String,
-    val url: String
+    val url: String ,
+    val image : String ,
+    val body : String
 ):Parcelable

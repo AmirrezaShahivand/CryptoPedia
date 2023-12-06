@@ -1934,7 +1934,8 @@
       "web": "https://iotex.io",
       "twt": "iotex_io",
       "reddit": "https://www.reddit.com/r/IoTeX",
-      "forum": ""
+      "forum": "",
+      "github": ""
     }
   },
   {
@@ -16754,7 +16755,9 @@
       "web": "http://www.supercoin.the-node.net/",
       "twt": "coinsuper",
       "reddit": "https://www.reddit.com/r/supercoin",
-      "forum": ""
+      "forum": "" ,
+      "github": ""
+
     }
   },
   {

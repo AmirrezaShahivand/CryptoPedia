@@ -16,6 +16,9 @@
         android:theme="@style/Theme.ShahiCrypto"
         tools:targetApi="34">
         <activity
+            android:name=".features.newsScreen.NewsActivity"
+            android:exported="false" />
+        <activity
             android:name=".features.coinScreen.CoinActivity"
             android:exported="false" />
         <activity
