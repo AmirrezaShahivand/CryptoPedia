@@ -10,13 +10,12 @@ import com.example.shahicripto.model.local.NewsData.NewsDataDao
 import com.example.shahicripto.model.local.NewsData.NewsDataEntity
 
 
-@Database(version = 1, exportSchema = false, entities = [CoinsDataEntitity::class , NewsDataEntity::class])
+@Database(version =2, exportSchema = false, entities = [CoinsDataEntitity::class , NewsDataEntity::class])
 abstract class MyDatabase : RoomDatabase() {
 
 
     abstract val coinsDataDao: CoinsDataDao
     abstract val newsDataDao : NewsDataDao
-
 
     companion object {
 
@@ -25,13 +24,8 @@ abstract class MyDatabase : RoomDatabase() {
 
         fun getDatabase(context: Context): MyDatabase {
 
-         //   var instance = dataBase
-
-           // if (instance == null) {
-
             synchronized(this){
                 if (dataBase == null){
-//                instance = Room.databaseBuilder(
 
                     dataBase = Room.databaseBuilder(
                         context.applicationContext,
@@ -41,7 +35,6 @@ abstract class MyDatabase : RoomDatabase() {
                         .build()
                 }
 
-                // return instance
                 return dataBase!!
             }
             }

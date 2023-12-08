@@ -1,32 +1,41 @@
 package com.example.shahicripto.features.marketScreen
 
+import android.annotation.SuppressLint
 import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import cn.pedant.SweetAlert.SweetAlertDialog
+import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import cn.pedant.SweetAlert.SweetAlertDialog
 import com.bumptech.glide.RequestManager
 import com.example.shahicripto.R
-import com.example.shahicripto.util.NetworkChecker
-import com.example.shahicripto.model.MainRepository
 import com.example.shahicripto.databinding.ActivityMarketBinding
 import com.example.shahicripto.features.marketScreen.marketFragment.MarketFragment
 import com.example.shahicripto.features.marketScreen.newsFragment.NewsFragment
+import com.example.shahicripto.model.MainRepository
 import com.example.shahicripto.model.MyDatabase
 import com.example.shahicripto.model.api.ApiService
 import com.example.shahicripto.util.MarketViewModelFactory
+import com.example.shahicripto.util.NetworkChecker
 import dagger.hilt.android.AndroidEntryPoint
 import www.sanju.motiontoast.MotionToast
 import www.sanju.motiontoast.MotionToastStyle
+import java.io.File
 import javax.inject.Inject
+
 
 @AndroidEntryPoint
 class MarketActivity : AppCompatActivity() {
     lateinit var marketScreenViewModel: MarketScreenViewModel
+
+    lateinit var sharePreferences: SharedPreferences
+
+    var firstRun = true
 
     @Inject
     lateinit var glide: RequestManager
@@ -34,11 +43,39 @@ class MarketActivity : AppCompatActivity() {
     @Inject
     lateinit var apiService: ApiService
 lateinit var binding : ActivityMarketBinding
+    @SuppressLint("WrongThread")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMarketBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setSupportActionBar(binding.layoutToolbar.toolbar)
+
+        sharePreferences = getSharedPreferences("data", Context.MODE_PRIVATE)
+
+
+
+       val first = sharePreferences.getBoolean("firstRun" , true)
+
+        if (first){
+            firstRun = false
+            sharePreferences.edit().putBoolean("firstRun" , firstRun).apply()
+            clearApplicationData()
+            val dialog = SweetAlertDialog(this, SweetAlertDialog.CUSTOM_IMAGE_TYPE)
+            dialog.titleText = "Welcome to Crypto Pedia!"
+            dialog.contentText =
+                "I hope you have a good experience at Crypto Pedia"
+            dialog.confirmText = "Thanks :)"
+            dialog.setCustomImage(R.drawable.welcome)
+            dialog.show()
+
+            dialog.setConfirmClickListener {
+                dialog.dismiss()
+            }
+        }
+
+        
+
+
 
         firstRun()
         bottomNavigation()
@@ -46,8 +83,6 @@ lateinit var binding : ActivityMarketBinding
 
 
         binding.swipeRefreshMain.setOnRefreshListener {
-            marketScreenViewModel.refreshData()
-            marketScreenViewModel.refreshNews()
             internetChecker(this)
             Handler(Looper.getMainLooper()).postDelayed({
                 binding.swipeRefreshMain.isRefreshing = false
@@ -138,7 +173,35 @@ lateinit var binding : ActivityMarketBinding
         }
     }
 
+    fun clearApplicationData() {
+        val cache = cacheDir
+        val appDir = File(cache.parent)
+        if (appDir.exists()) {
+            val children = appDir.list()
+            for (s in children) {
+                if (s != "lib") {
+                    deleteDir(File(appDir, s))
+                    Log.i(
+                        "EEEEEERRRRRRROOOOOOORRRR",
+                        "**************** File /data/data/APP_PACKAGE/$s DELETED *******************"
+                    )
+                }
+            }
+        }
+    }
 
+    fun deleteDir(dir: File?): Boolean {
+        if (dir != null && dir.isDirectory) {
+            val children = dir.list()
+            for (i in children.indices) {
+                val success = deleteDir(File(dir, children[i]))
+                if (!success) {
+                    return false
+                }
+            }
+        }
+        return dir!!.delete()
+    }
 
 
 }

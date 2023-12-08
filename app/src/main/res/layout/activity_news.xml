@@ -10,16 +10,18 @@
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarActivity2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        >
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
             android:id="@+id/collapsingMain"
+            android:fitsSystemWindows="true"
             android:theme="@style/Theme.MaterialComponents"
             app:contentScrim="@color/blueDark"
             android:layout_height="wrap_content"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
-
 
             <ImageView
                 app:layout_collapseMode="parallax"

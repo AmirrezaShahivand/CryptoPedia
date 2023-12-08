@@ -42,7 +42,7 @@ public final class MyDatabase_Impl extends MyDatabase {
 
   @Override
   protected SupportSQLiteOpenHelper createOpenHelper(DatabaseConfiguration configuration) {
-    final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(configuration, new RoomOpenHelper.Delegate(1) {
+    final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(configuration, new RoomOpenHelper.Delegate(2) {
       @Override
       public void createAllTables(SupportSQLiteDatabase _db) {
         _db.execSQL("CREATE TABLE IF NOT EXISTS `CoinsDataEntitity` (`name` TEXT NOT NULL, `price` TEXT NOT NULL, `change` REAL NOT NULL, `hajm` REAL NOT NULL, `url` TEXT NOT NULL, `oPEN24HOUR` TEXT NOT NULL, `hIGH24HOUR` TEXT NOT NULL, `lOW24HOUR` TEXT NOT NULL, `cHANGE24HOUR` TEXT NOT NULL, `algorithm` TEXT NOT NULL, `tOTALVOLUME24H` TEXT NOT NULL, `mKTCAP` TEXT NOT NULL, `sUPPLY` TEXT NOT NULL, `fullName` TEXT NOT NULL, `cHANGEPCT24HOUR` TEXT NOT NULL, `cHANGE24HOUR_RAW` REAL NOT NULL, PRIMARY KEY(`name`))");
