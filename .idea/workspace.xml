@@ -13,8 +13,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc77e75d-27b0-4cf5-a1a4-275fb2f1bc59" name="Changes" comment="add MarketFragment and NewsFragment , new UI and add NewsActivity , Version 1.3">
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/welcome.jpg" afterDir="false" />
+    <list default="true" id="fc77e75d-27b0-4cf5-a1a4-275fb2f1bc59" name="Changes" comment="Solving the problem of not installing on previous versions. Some graphical improvements and added welcome message , version 1.4">
       <change beforePath="$PROJECT_DIR$/.gradle/8.0/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.0/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.0/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.0/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.0/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.0/fileHashes/fileHashes.bin" afterDir="false" />
@@ -24,19 +23,16 @@
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/shahicripto/model/MyDatabase_Impl.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/shahicripto/model/MyDatabase_Impl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/shahicripto/MyApp.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/shahicripto/MyApp.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/shahicripto/features/marketScreen/MarketActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/shahicripto/features/marketScreen/MarketActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/shahicripto/model/MyDatabase.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/shahicripto/model/MyDatabase.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_news.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_news.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/shahicripto/features/marketScreen/marketFragment/MarketAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/shahicripto/features/marketScreen/marketFragment/MarketAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/shahicripto/model/MainRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/shahicripto/model/MainRepository.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/shahicripto/model/api/ApiService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/shahicripto/model/api/ApiService.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[84572f2a]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\intel\.android\avd\Pixel_6_Pro_API_33_2.avd]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -135,33 +131,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ApkExportedModule": "ShahiCripto.app",
-    "BundleExportedModule": "ShahiCripto.app",
-    "ExportApk.ApkPathForShahiCripto.app": "E:\\2",
-    "ExportBundle.BundlePathForShahiCripto.app": "C:\\Users\\intel\\AndroidStudioProjects\\ShahiCripto\\app",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "cidr.known.project.marker": "true",
-    "com.google.services.firebase.aqiPopupShown": "true",
-    "last_directory_selection": "C:/Users/intel/AndroidStudioProjects/ShahiCripto/app/src/main/res/drawable",
-    "last_opened_file_path": "C:/Users/intel/AndroidStudioProjects/ShahiCripto/app/src/main/res/drawable",
-    "project.structure.last.edited": "Dependencies",
-    "project.structure.proportion": "0.17",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "memory.settings",
-    "two.files.diff.last.used.folder": "C:/Users/intel/AndroidStudioProjects/ShahiCripto/app/src/main/java/features"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ApkExportedModule&quot;: &quot;ShahiCripto.app&quot;,
+    &quot;BundleExportedModule&quot;: &quot;ShahiCripto.app&quot;,
+    &quot;ExportApk.ApkPathForShahiCripto.app&quot;: &quot;E:\\2&quot;,
+    &quot;ExportBundle.BundlePathForShahiCripto.app&quot;: &quot;C:\\Users\\intel\\AndroidStudioProjects\\ShahiCripto\\app&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;com.google.services.firebase.aqiPopupShown&quot;: &quot;true&quot;,
+    &quot;last_directory_selection&quot;: &quot;C:/Users/intel/AndroidStudioProjects/ShahiCripto/app/src/main/res/drawable&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/intel/AndroidStudioProjects/ShahiCripto/app/src/main/res/drawable&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Dependencies&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.17&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;two.files.diff.last.used.folder&quot;: &quot;C:/Users/intel/AndroidStudioProjects/ShahiCripto/app/src/main/java/features&quot;
   },
-  "keyToStringList": {
-    "ExportApk.BuildVariants": [
-      "release"
+  &quot;keyToStringList&quot;: {
+    &quot;ExportApk.BuildVariants&quot;: [
+      &quot;release&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="PsdUISettings">
     <option name="BUILD_VARIANTS_TAB" value="Build Types" />
     <option name="LAST_EDITED_BUILD_TYPE" value="release" />
@@ -424,7 +420,14 @@
       <option name="project" value="LOCAL" />
       <updated>1701897252362</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Solving the problem of not installing on previous versions. Some graphical improvements and added welcome message , version 1.4">
+      <created>1702038525167</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1702038525167</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -456,7 +459,9 @@
     <MESSAGE value="add version code number to 5" />
     <MESSAGE value="add MarketFragment and NewsFragment , new UI and add NewsActivity" />
     <MESSAGE value="add MarketFragment and NewsFragment , new UI and add NewsActivity , Version 1.3" />
-    <option name="LAST_COMMIT_MESSAGE" value="add MarketFragment and NewsFragment , new UI and add NewsActivity , Version 1.3" />
+    <MESSAGE value="Solving the problem of not installing on previous versions. Some graphical improvements and added welcome message" />
+    <MESSAGE value="Solving the problem of not installing on previous versions. Some graphical improvements and added welcome message , version 1.4" />
+    <option name="LAST_COMMIT_MESSAGE" value="Solving the problem of not installing on previous versions. Some graphical improvements and added welcome message , version 1.4" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -482,35 +487,46 @@
           <option name="timeStamp" value="85" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/shahicripto/features/marketScreen/marketFragment/MarketFragment.kt</url>
-          <line>156</line>
-          <option name="timeStamp" value="87" />
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/shahicripto/features/marketScreen/MarketScreenViewModel.kt</url>
+          <line>22</line>
+          <option name="timeStamp" value="129" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/shahicripto/features/marketScreen/marketFragment/MarketFragment.kt</url>
-          <line>158</line>
-          <option name="timeStamp" value="88" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/shahicripto/features/marketScreen/marketFragment/MarketFragment.kt</url>
-          <line>159</line>
-          <option name="timeStamp" value="89" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="kotlin-function">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/shahicripto/features/marketScreen/marketFragment/MarketFragment.kt</url>
-          <line>153</line>
-          <properties class="com.example.shahicripto.features.marketScreen.marketFragment.MarketFragment" method="showDataINRecycler">
-            <option name="WATCH_EXIT" value="false" />
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/shahicripto/features/marketScreen/newsFragment/NewsFragment.kt</url>
+          <line>86</line>
+          <properties>
+            <option name="lambda-ordinal" value="-1" />
           </properties>
-          <option name="timeStamp" value="106" />
+          <option name="timeStamp" value="144" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/shahicripto/features/marketScreen/newsFragment/NewsFragment.kt</url>
+          <line>87</line>
+          <option name="timeStamp" value="145" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-function">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/shahicripto/features/marketScreen/newsFragment/NewsFragment.kt</url>
           <line>61</line>
-          <properties class="com.example.shahicripto.features.marketScreen.newsFragment.NewsFragment" method="showDataINRecycler">
+          <properties class="com.example.shahicripto.features.marketScreen.newsFragment.NewsFragment">
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="107" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-function">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/shahicripto/features/marketScreen/MarketScreenViewModel.kt</url>
+          <line>21</line>
+          <properties class="com.example.shahicripto.features.marketScreen.MarketScreenViewModel" method="getTopNewsFromDataBase">
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="128" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-function">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/shahicripto/features/marketScreen/newsFragment/NewsFragment.kt</url>
+          <line>63</line>
+          <properties class="com.example.shahicripto.features.marketScreen.newsFragment.NewsFragment" method="showDataINRecycler">
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="140" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

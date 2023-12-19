@@ -39,7 +39,7 @@ class MainRepository(
                 it.data.forEach {
                     coinsDataDao.insertAll(
                         CoinsDataEntitity(
-                            it.coinInfo.name,
+                            it.coinInfo.name ,
                             it.dISPLAY.uSDT.pRICE,
                             it.rAW.uSDT.cHANGEPCT24HOUR,
                             it.rAW.uSDT.mKTCAP,

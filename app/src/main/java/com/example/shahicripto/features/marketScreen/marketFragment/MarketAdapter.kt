@@ -26,50 +26,66 @@ class MarketAdapter(
 
         @SuppressLint("SetTextI18n")
         fun bindView(dataCoin: CoinsDataEntitity) {
-            binding.txtNameCoin.text = dataCoin.name
-            binding.txtPrice.text = dataCoin.price
 
 
-            val taghir = dataCoin.change
+            if (dataCoin.cHANGE24HOUR!=null && dataCoin.change!=null && dataCoin.url!=null
+                && dataCoin.hajm!=null && dataCoin.price!=null && dataCoin.fullName != null
+                && dataCoin.cHANGE24HOUR_RAW!=null && dataCoin.hIGH24HOUR!=null
+                && dataCoin.mKTCAP!=null && dataCoin.cHANGEPCT24HOUR !=null &&
+                dataCoin.lOW24HOUR != null && dataCoin.oPEN24HOUR!=null &&
+                dataCoin.tOTALVOLUME24H != null && dataCoin.algorithm!=null &&
+                dataCoin.sUPPLY != null && dataCoin.price !=null && dataCoin.fullName!=null
+                ){
+                binding.txtNameCoin.text = dataCoin.name
+                binding.txtPrice.text = dataCoin.price
 
-            if (taghir > 0) {
-                binding.txtTaghir.setTextColor(
-                    ContextCompat.getColor(
-                        binding.root.context,
-                        R.color.colorGain
+
+                val taghir = dataCoin.change
+
+                if (taghir > 0) {
+                    binding.txtTaghir.setTextColor(
+                        ContextCompat.getColor(
+                            binding.root.context,
+                            R.color.colorGain
+                        )
                     )
-                )
-                binding.txtTaghir.text = dataCoin.change.toString().substring(0, 4) + "%"
-            } else if (taghir < 0) {
-                binding.txtTaghir.setTextColor(
-                    ContextCompat.getColor(
-                        binding.root.context,
-                        R.color.colorLoss
+                    binding.txtTaghir.text = dataCoin.change.toString().substring(0, 4) + "%"
+                } else if (taghir < 0) {
+                    binding.txtTaghir.setTextColor(
+                        ContextCompat.getColor(
+                            binding.root.context,
+                            R.color.colorLoss
+                        )
                     )
-                )
-                binding.txtTaghir.text = dataCoin.change.toString().substring(0, 4)+ "%"
-            } else {
-                binding.txtTaghir.text = "0%"
-            }
+                    binding.txtTaghir.text = dataCoin.change.toString().substring(0, 4)+ "%"
+                } else {
+                    binding.txtTaghir.text = "0%"
+                }
 
 
-            val hajm = dataCoin.hajm / 1000000000
-            val indexDot = hajm.toString().indexOf('.')
-            binding.txtHajm.text = hajm.toString().substring(0, indexDot + 2) + "B"
-
-
+                val hajm = dataCoin.hajm.div(1000000000)
+                val indexDot = hajm.toString().indexOf('.')
+                binding.txtHajm.text = hajm.toString().substring(0, indexDot + 2) + "B"
 
 
 
-            // Hilt =>
-            glide
-                .load(BASE_URL_IMAGE + dataCoin.url)
-                .into(binding.imgCoin)
+
+
+                // Hilt =>
+                glide
+                    .load(BASE_URL_IMAGE + dataCoin.url)
+                    .into(binding.imgCoin)
 
 //            Glide
 //                .with(itemView)
 //                .load(BASE_URL_IMAGE + dataCoin.url)
 //                .into(binding.imgCoin)
+
+
+
+
+            }
+
 
             itemView.setOnClickListener {
                 recyclerCallback.onItemClicked(dataCoin)

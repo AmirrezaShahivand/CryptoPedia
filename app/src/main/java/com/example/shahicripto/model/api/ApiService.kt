@@ -21,8 +21,8 @@ interface ApiService {
     @GET("top/totalvolfull")
     fun getTopCoins(
         @Query("tsym") to_symbol : String = "USDT" ,
-        @Query("limit") limit_data : Int = 35
-        ):Single<CoinsData>
+        @Query("limit") limit_data : Int =15
+    ):Single<CoinsData>
 
 
     @Headers(API_KEY)
