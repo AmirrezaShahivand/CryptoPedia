@@ -9,6 +9,7 @@ import com.example.shahicripto.R
 import com.example.shahicripto.databinding.ItemRecyclerMarketBinding
 import com.example.shahicripto.model.local.CoinsData.CoinsDataEntitity
 import com.example.shahicripto.util.formatGroupedNumber
+import com.example.shahicripto.util.formatCryptoPriceText
 class MarketAdapter(
     private val glide: RequestManager ,
     private val data: ArrayList<CoinsDataEntitity>,
@@ -18,7 +19,7 @@ class MarketAdapter(
 
         fun bindView(dataCoin: CoinsDataEntitity) {
             binding.txtNameCoin.text = dataCoin.name
-            binding.txtPrice.text = dataCoin.price
+            binding.txtPrice.text = formatCryptoPriceText(dataCoin.price)
 
             val changeColor = if (dataCoin.change < 0) R.color.colorLoss else R.color.colorGain
             binding.txtTaghir.setTextColor(ContextCompat.getColor(binding.root.context, changeColor))

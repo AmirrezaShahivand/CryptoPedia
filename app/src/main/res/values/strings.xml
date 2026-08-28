@@ -53,4 +53,6 @@
     <string name="news_body_placeholder">News content will appear here.</string>
     <string name="source">Source</string>
     <string name="news_translating">Translating…</string>
+    <string name="chart_date_placeholder">Date: —</string>
+    <string name="chart_date">Date: %1$s</string>
 </resources>

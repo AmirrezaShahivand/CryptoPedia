@@ -64,10 +64,20 @@
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_chart_change2"
+        app:layout_constraintTop_toBottomOf="@+id/txt_chart_date"
         app:spark_animateChanges="true"
         app:spark_lineColor="@color/colorAccent"
         app:spark_scrubEnabled="true" />
+
+    <TextView
+        android:id="@+id/txt_chart_date"
+        style="@style/CoinBitText.BodyTertiary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="@string/chart_date_placeholder"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_chart_change2" />
 
     <TextView
         android:visibility="gone"

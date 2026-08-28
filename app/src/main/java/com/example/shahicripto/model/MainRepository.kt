@@ -212,12 +212,12 @@ class MainRepository(
     fun getChartData(coinId: String, symbol: String, period: String): Single<ChartData> {
         val now = System.currentTimeMillis()
         val chartConfig = when (period) {
-            HOUR -> ChartConfig(now - 12L * 60 * 60 * 1000, "1h", 12)
-            HOURS24 -> ChartConfig(now - 24L * 60 * 60 * 1000, "1h", 24)
-            WEEK -> ChartConfig(now - 7L * 24 * 60 * 60 * 1000, "4h", 42)
-            MONTH -> ChartConfig(now - 30L * 24 * 60 * 60 * 1000, "1d", 30)
+            HOUR -> ChartConfig(now - 12L * 60 * 60 * 1000, "5m", 144)
+            HOURS24 -> ChartConfig(now - 24L * 60 * 60 * 1000, "15m", 96)
+            WEEK -> ChartConfig(now - 7L * 24 * 60 * 60 * 1000, "1h", 168)
+            MONTH -> ChartConfig(now - 30L * 24 * 60 * 60 * 1000, "4h", 180)
             MONTH3 -> ChartConfig(now - 90L * 24 * 60 * 60 * 1000, "1d", 90)
-            YEAR -> ChartConfig(now - 365L * 24 * 60 * 60 * 1000, "1w", 52)
+            YEAR -> ChartConfig(now - 365L * 24 * 60 * 60 * 1000, "1d", 365)
             ALL -> ChartConfig(0L, "1w", 200)
             else -> ChartConfig(now - 12L * 60 * 60 * 1000, "1h", 12)
         }
@@ -225,69 +225,64 @@ class MainRepository(
         return Single.fromCallable {
             priceSnapshotDao.getSince(coinId, chartConfig.from)
         }.flatMap { snapshots ->
-            // Two local snapshots only produce a visually misleading straight
-            // segment. Prefer real candle data until local history is useful.
-            if (snapshots.size >= 3) {
-                Single.just(buildChartData(snapshots.map { it.toChartPoint() }))
-            } else {
-                val binanceSymbol = "${symbol.uppercase(Locale.US)}USDT"
-                apiService.getPublicKlines(
-                    symbol = binanceSymbol,
-                    interval = chartConfig.interval,
-                    limit = chartConfig.limit
-                ).map { rows ->
-                    val points = rows.mapNotNull(::toChartPoint)
+            // Always prefer fresh multi-point candles for accurate charts.
+            // Local snapshots are used only when the remote sources are unavailable.
+            val binanceSymbol = "${symbol.uppercase(Locale.US)}USDT"
+            apiService.getPublicKlines(
+                symbol = binanceSymbol,
+                interval = chartConfig.interval,
+                limit = chartConfig.limit
+            ).map { rows ->
+                val points = rows.mapNotNull(::toChartPoint)
+                if (points.isEmpty()) {
+                    throw IllegalStateException("برای این ارز داده نمودار موجود نیست")
+                }
+                buildChartData(points)
+            }.onErrorResumeNext {
+                apiService.getTodayOhlc(coinId).map { values ->
+                    val points = values.flatMap { value ->
+                        val close = value.close ?: return@flatMap emptyList()
+                        val open = value.open ?: close
+                        val high = value.high ?: close
+                        val low = value.low ?: close
+                        val volume = value.volume ?: 0.0
+                        listOf(
+                            ChartData.Data(
+                                close = open,
+                                conversionSymbol = "USDT",
+                                conversionType = "direct",
+                                high = high,
+                                low = low,
+                                open = open,
+                                time = parseTime(value.timeOpen),
+                                volumefrom = volume,
+                                volumeto = volume
+                            ),
+                            ChartData.Data(
+                                close = close,
+                                conversionSymbol = "USDT",
+                                conversionType = "direct",
+                                high = high,
+                                low = low,
+                                open = open,
+                                time = parseTime(value.timeClose ?: value.timeOpen),
+                                volumefrom = volume,
+                                volumeto = volume
+                            )
+                        )
+                    }
                     if (points.isEmpty()) {
                         throw IllegalStateException("برای این ارز داده نمودار موجود نیست")
                     }
                     buildChartData(points)
-                }.onErrorResumeNext {
-                    apiService.getTodayOhlc(coinId).map { values ->
-                        val points = values.flatMap { value ->
-                            val close = value.close ?: return@flatMap emptyList()
-                            val open = value.open ?: close
-                            val high = value.high ?: close
-                            val low = value.low ?: close
-                            val volume = value.volume ?: 0.0
-                            listOf(
-                                ChartData.Data(
-                                    close = open,
-                                    conversionSymbol = "USDT",
-                                    conversionType = "direct",
-                                    high = high,
-                                    low = low,
-                                    open = open,
-                                    time = parseTime(value.timeOpen),
-                                    volumefrom = volume,
-                                    volumeto = volume
-                                ),
-                                ChartData.Data(
-                                    close = close,
-                                    conversionSymbol = "USDT",
-                                    conversionType = "direct",
-                                    high = high,
-                                    low = low,
-                                    open = open,
-                                    time = parseTime(value.timeClose ?: value.timeOpen),
-                                    volumefrom = volume,
-                                    volumeto = volume
-                                )
-                            )
-                        }
-                        if (points.isEmpty()) {
-                            throw IllegalStateException("برای این ارز داده نمودار موجود نیست")
-                        }
-                        buildChartData(points)
-                    }
-                }.onErrorReturn {
-                    // Some symbols (for example USDT itself) do not have a
-                    // Binance USDT pair. Keep the chart usable from local
-                    // snapshots instead of surfacing CoinPaprika's 402.
-                    if (snapshots.isNotEmpty()) {
-                        buildChartData(snapshots.map { it.toChartPoint() })
-                    } else {
-                        throw IllegalStateException("برای این ارز داده نمودار موجود نیست")
-                    }
+                }
+            }.onErrorReturn {
+                // Some symbols (for example USDT itself) do not have a
+                // Binance USDT pair. Keep the chart usable from local snapshots.
+                if (snapshots.isNotEmpty()) {
+                    buildChartData(snapshots.map { it.toChartPoint() })
+                } else {
+                    throw IllegalStateException("برای این ارز داده نمودار موجود نیست")
                 }
             }
         }

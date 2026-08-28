@@ -39,3 +39,13 @@ fun formatGroupedNumber(value: Double?): String {
     }
     return formatter.format(BigDecimal.valueOf(value))
 }
+
+fun formatCryptoPriceText(value: String?): String {
+    val numeric = value?.replace(",", "")?.toDoubleOrNull()
+    return if (numeric == null) value ?: "—" else formatCryptoPrice(numeric)
+}
+
+fun formatGroupedNumberText(value: String?): String {
+    val numeric = value?.replace(",", "")?.toDoubleOrNull()
+    return if (numeric == null) value ?: "—" else formatGroupedNumber(numeric)
+}

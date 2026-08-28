@@ -36,6 +36,12 @@ import com.example.shahicripto.util.NewsTranslator
 import com.example.shahicripto.util.showToast
 import com.example.shahicripto.util.userFacingMessage
 import com.example.shahicripto.util.formatCryptoPrice
+import com.example.shahicripto.util.formatCryptoPriceText
+import com.example.shahicripto.util.formatGroupedNumber
+import com.example.shahicripto.util.formatGroupedNumberText
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.SingleObserver
@@ -58,6 +64,7 @@ class CoinActivity : AppCompatActivity() {
     private var ohlcDisposable: Disposable? = null
     private var descriptionTranslationDisposable: Disposable? = null
     private var descriptionTranslator: NewsTranslator? = null
+    private var displayedChartData: List<ChartData.Data> = emptyList()
     private var selectedPeriod = HOUR
 
 
@@ -156,8 +163,8 @@ class CoinActivity : AppCompatActivity() {
                     binding.statistics.txtStatisticsOpenPrice.text = formatCryptoPrice(today.open)
                     binding.statistics.txtStatisticsHigh.text = formatCryptoPrice(today.high)
                     binding.statistics.txtStatisticsLow.text = formatCryptoPrice(today.low)
-                    binding.statistics.txtStatisticsTotalVolume.text = formatCryptoPrice(today.volume)
-                    binding.statistics.txtStatisticsMarketCap.text = formatCryptoPrice(today.marketCap)
+                    binding.statistics.txtStatisticsTotalVolume.text = formatGroupedNumber(today.volume)
+                    binding.statistics.txtStatisticsMarketCap.text = formatGroupedNumber(today.marketCap)
                 }
             }, { error ->
                 showToast(error.userFacingMessage())
@@ -261,14 +268,14 @@ class CoinActivity : AppCompatActivity() {
 
     private fun initStatisticsUi() {
 
-        binding.statistics.txtStatisticsOpenPrice.text = dataThisCoin.oPEN24HOUR
-        binding.statistics.txtStatisticsHigh.text = dataThisCoin.hIGH24HOUR
-        binding.statistics.txtStatisticsLow.text = dataThisCoin.lOW24HOUR
-        binding.statistics.txtStatisticsChange.text = dataThisCoin.cHANGE24HOUR
+        binding.statistics.txtStatisticsOpenPrice.text = formatCryptoPriceText(dataThisCoin.oPEN24HOUR)
+        binding.statistics.txtStatisticsHigh.text = formatCryptoPriceText(dataThisCoin.hIGH24HOUR)
+        binding.statistics.txtStatisticsLow.text = formatCryptoPriceText(dataThisCoin.lOW24HOUR)
+        binding.statistics.txtStatisticsChange.text = formatCryptoPriceText(dataThisCoin.cHANGE24HOUR)
         binding.statistics.txtStatisticsAlgoritm.text = dataThisCoin.algorithm
-        binding.statistics.txtStatisticsTotalVolume.text = dataThisCoin.tOTALVOLUME24H
-        binding.statistics.txtStatisticsMarketCap.text = dataThisCoin.mKTCAP
-        binding.statistics.txtStatisticsSupply.text = dataThisCoin.sUPPLY
+        binding.statistics.txtStatisticsTotalVolume.text = formatGroupedNumberText(dataThisCoin.tOTALVOLUME24H)
+        binding.statistics.txtStatisticsMarketCap.text = formatGroupedNumberText(dataThisCoin.mKTCAP)
+        binding.statistics.txtStatisticsSupply.text = formatGroupedNumberText(dataThisCoin.sUPPLY)
 
     }
 
@@ -311,9 +318,9 @@ class CoinActivity : AppCompatActivity() {
 
         }
 
-        binding.chart.txtChartPrice.text = dataThisCoin.price
-        binding.chart.txtChartChange1.text = dataThisCoin.cHANGE24HOUR
-        binding.chart.txtChartChange2.text = dataThisCoin.cHANGEPCT24HOUR + "%"
+        binding.chart.txtChartPrice.text = formatCryptoPriceText(dataThisCoin.price)
+        binding.chart.txtChartChange1.text = formatCryptoPriceText(dataThisCoin.cHANGE24HOUR)
+        binding.chart.txtChartChange2.text = formatGroupedNumberText(dataThisCoin.cHANGEPCT24HOUR) + "%"
         val taghir = dataThisCoin.cHANGE24HOUR_RAW
         if (taghir > 0) {
             binding.chart.txtChartChange2.setTextColor(
@@ -368,15 +375,19 @@ class CoinActivity : AppCompatActivity() {
         } else {
             binding.chart.txtChartChange2.text = "0%"
             binding.chart.txtUpdown.text = "▲"
-            binding.chart.txtChartPrice.text = dataThisCoin.price
+            binding.chart.txtChartPrice.text = formatCryptoPriceText(dataThisCoin.price)
         }
 
         binding.chart.sparkView.setScrubListener {
-            //show price kamel
-            if (it == null) {
-                binding.chart.txtChartPrice.text = dataThisCoin.price
+            val point = it as? ChartData.Data
+            if (point == null) {
+                binding.chart.txtChartPrice.text = formatCryptoPriceText(dataThisCoin.price)
+                displayedChartData.lastOrNull()?.let { last ->
+                    binding.chart.txtChartDate.text = getString(R.string.chart_date, formatChartDate(last))
+                }
             } else {
-                binding.chart.txtChartPrice.text = formatCryptoPrice((it as ChartData.Data).close)
+                binding.chart.txtChartPrice.text = formatCryptoPrice(point.close)
+                binding.chart.txtChartDate.text = getString(R.string.chart_date, formatChartDate(point))
             }
 
         }
@@ -415,9 +426,14 @@ class CoinActivity : AppCompatActivity() {
 
                 override fun onSuccess(t: ChartData) {
                     if (t.data.isNotEmpty()) {
+                        displayedChartData = t.data
                         binding.chart.textView5.visibility = View.GONE
                         val chartAdapter = ChartAdapter(t.data, t.data.first().open.toString())
                         binding.chart.sparkView.adapter = chartAdapter
+                        binding.chart.txtChartDate.text = getString(
+                            R.string.chart_date,
+                            formatChartDate(t.data.last())
+                        )
                     } else {
                         binding.chart.textView5.visibility = View.VISIBLE
                         binding.chart.textView5.text = "برای این بازه داده‌ای وجود ندارد"
@@ -428,6 +444,15 @@ class CoinActivity : AppCompatActivity() {
 
             })
 
+    }
+
+    private fun formatChartDate(point: ChartData.Data): String {
+        val locale = if (resources.configuration.locales[0].language == "fa") {
+            Locale("fa", "IR")
+        } else {
+            Locale.US
+        }
+        return SimpleDateFormat("yyyy/MM/dd HH:mm", locale).format(Date(point.time * 1000L))
     }
 
     override fun onDestroy() {

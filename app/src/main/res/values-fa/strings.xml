@@ -53,4 +53,6 @@
     <string name="period_3month">۳ماه</string>
     <string name="period_1year">۱سال</string>
     <string name="period_all">همه</string>
+    <string name="chart_date_placeholder">تاریخ: —</string>
+    <string name="chart_date">تاریخ: %1$s</string>
 </resources>
