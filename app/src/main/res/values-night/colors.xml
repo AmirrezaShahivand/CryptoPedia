@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#60A5FA</color>
+    <color name="colorAccent">#2DD4BF</color>
+    <color name="colorPrimaryDark">#172554</color>
+    <color name="backgroundColor">#0B1220</color>
+    <color name="primaryTextColor">#F8FAFC</color>
+    <color name="secondaryTextColor">#A7B2C4</color>
+    <color name="tertiaryTextColor">#7F8EA3</color>
+    <color name="colorPrimaryDusk">#1E3A5F</color>
+    <color name="colorLoss">#FB7185</color>
+    <color name="colorGain">#34D399</color>
+    <color name="quaternaryTextColo">#94A3B8</color>
+    <color name="surfaceColor">#131D2E</color>
+    <color name="surfaceVariantColor">#1B293D</color>
+    <color name="onSurfaceColor">#F8FAFC</color>
+</resources>

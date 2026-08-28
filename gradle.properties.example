@@ -1,0 +1,3 @@
+# Copy the value below into your local gradle.properties or CI secret.
+# Do not commit the real API key.
+cryptocompareApiKey=YOUR_CRYPTOCOMPARE_API_KEY

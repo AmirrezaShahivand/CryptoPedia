@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="colorPrimary">#2563EB</color>
+    <color name="colorAccent">#14B8A6</color>
+    <color name="colorPrimaryDark">#1D4ED8</color>
+    <color name="backgroundColor">#F5F7FB</color>
+    <color name="primaryTextColor">#172033</color>
+    <color name="secondaryTextColor">#64748B</color>
+    <color name="tertiaryTextColor">#94A3B8</color>
+    <color name="colorPrimaryDusk">#DBEAFE</color>
+    <color name="colorLoss">#DC4C64</color>
+    <color name="colorGain">#159A73</color>
+    <color name="quaternaryTextColo">#94A3B8</color>
+    <color name="surfaceColor">#FFFFFF</color>
+    <color name="surfaceVariantColor">#EEF2F7</color>
+    <color name="onSurfaceColor">#172033</color>
+    <color name="cerise">#da0e86</color>
+    <color name="bubble_gum_pink">#ff5ba4</color>
+    <color name="orange">#F15500</color>
+    <color name="yellow">#F9A825</color>
+    <color name="orangeDark">#E65100</color>
+    <color name="blueDark">#0D47A1</color>
+    <color name="blue">#1565C0</color>
+</resources>
