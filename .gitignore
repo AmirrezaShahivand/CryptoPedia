@@ -13,6 +13,5 @@ secrets.properties
 !.env.example
 *.iml
 .idea/
-app/release/*.apk
-app/release/*.aab
+app/release/
 hs_err_pid*.log
