@@ -3,6 +3,14 @@
 build/
 */build/
 local.properties
+secrets.properties
+*.jks
+*.keystore
+*.p12
+*.pem
+.env
+.env.*
+!.env.example
 *.iml
 .idea/
 app/release/*.apk
