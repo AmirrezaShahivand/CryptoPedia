@@ -10,5 +10,8 @@
         android:icon="@drawable/icon_news"
         android:title="@string/news" />
 
+    <item android:id="@+id/menu_ai_signals"
+        android:icon="@drawable/ic_ai_signal"
+        android:title="@string/ai_signals" />
 
 </menu>

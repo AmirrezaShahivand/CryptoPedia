@@ -15,6 +15,7 @@ import com.example.shahicripto.model.local.NewsData.NewsDataDao
 import com.example.shahicripto.model.local.NewsData.NewsDataEntity
 import com.example.shahicripto.util.ALL
 import com.example.shahicripto.util.COINPAPRIKA_IMAGE_BASE_URL
+import com.example.shahicripto.util.COINCAP_IMAGE_BASE_URL
 import com.example.shahicripto.util.HOUR
 import com.example.shahicripto.util.HOURS24
 import com.example.shahicripto.util.MONTH
@@ -151,7 +152,7 @@ class MainRepository(
                 price = formatPrice(priceUsdt),
                 change = change,
                 hajm = volumeUsdt,
-                url = "$COINPAPRIKA_IMAGE_BASE_URL${ticker.id}/logo.png",
+                url = "$COINCAP_IMAGE_BASE_URL${ticker.symbol.lowercase(Locale.US)}@2x.png",
                 oPEN24HOUR = "—",
                 hIGH24HOUR = "—",
                 lOW24HOUR = "—",

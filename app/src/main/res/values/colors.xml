@@ -23,4 +23,12 @@
     <color name="orangeDark">#E65100</color>
     <color name="blueDark">#0D47A1</color>
     <color name="blue">#1565C0</color>
+    <color name="colorVipGold">#F59E0B</color>
+    <color name="colorVipGoldDark">#B45309</color>
+    <color name="colorVipGoldLight">#FEF3C7</color>
+    <color name="colorStrongBuy">#059669</color>
+    <color name="colorBuy">#10B981</color>
+    <color name="colorNeutral">#F59E0B</color>
+    <color name="colorSell">#EF4444</color>
+    <color name="colorStrongSell">#B91C1C</color>
 </resources>

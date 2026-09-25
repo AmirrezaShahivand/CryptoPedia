@@ -10,6 +10,8 @@ import com.example.shahicripto.databinding.ItemRecyclerMarketBinding
 import com.example.shahicripto.model.local.CoinsData.CoinsDataEntitity
 import com.example.shahicripto.util.formatGroupedNumber
 import com.example.shahicripto.util.formatCryptoPriceText
+import java.util.Locale
+
 class MarketAdapter(
     private val glide: RequestManager ,
     private val data: ArrayList<CoinsDataEntitity>,
@@ -26,7 +28,25 @@ class MarketAdapter(
             binding.txtTaghir.text = "${formatGroupedNumber(dataCoin.change)}%"
             binding.txtHajm.text = "${formatGroupedNumber(dataCoin.hajm / 1_000_000_000.0)}B"
 
-            glide.load(dataCoin.url).into(binding.imgCoin)
+            val symbol = dataCoin.name.lowercase(Locale.US)
+            val coincapUrl = "https://assets.coincap.io/assets/icons/$symbol@2x.png"
+            val spothqUrl = "https://cdn.jsdelivr.net/gh/spothq/cryptocurrency-icons@master/128/color/$symbol.png"
+
+            val targetUrl = if (dataCoin.url.isNotBlank() && !dataCoin.url.contains("static.coinpaprika.com")) {
+                dataCoin.url
+            } else {
+                coincapUrl
+            }
+
+            glide.load(targetUrl)
+                .placeholder(R.drawable.ic_coin_placeholder)
+                .error(
+                    glide.load(spothqUrl)
+                        .placeholder(R.drawable.ic_coin_placeholder)
+                        .error(R.drawable.ic_coin_placeholder)
+                )
+                .into(binding.imgCoin)
+
             binding.root.setOnClickListener {
                 recyclerCallback.onItemClicked(dataCoin)
             }

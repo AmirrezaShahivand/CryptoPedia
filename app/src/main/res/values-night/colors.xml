@@ -14,4 +14,12 @@
     <color name="surfaceColor">#131D2E</color>
     <color name="surfaceVariantColor">#1B293D</color>
     <color name="onSurfaceColor">#F8FAFC</color>
+    <color name="colorVipGold">#FBBF24</color>
+    <color name="colorVipGoldDark">#D97706</color>
+    <color name="colorVipGoldLight">#3B2A10</color>
+    <color name="colorStrongBuy">#10B981</color>
+    <color name="colorBuy">#34D399</color>
+    <color name="colorNeutral">#FBBF24</color>
+    <color name="colorSell">#F87171</color>
+    <color name="colorStrongSell">#EF4444</color>
 </resources>

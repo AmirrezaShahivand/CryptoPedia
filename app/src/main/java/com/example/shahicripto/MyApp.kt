@@ -25,6 +25,7 @@ class MyApp :Application() {
         super.onCreate()
         installRxJavaErrorHandler()
         analytics = FirebaseAnalytics.getInstance(this)
+        com.example.shahicripto.model.api.RemoteConfigProvider.init(this)
     }
 
     private fun installRxJavaErrorHandler() {

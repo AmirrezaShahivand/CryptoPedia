@@ -1,0 +1,6 @@
+{
+  "name": "CryptoPedia",
+  "description": "Cryptocurrency market tracking, charts, and news application",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

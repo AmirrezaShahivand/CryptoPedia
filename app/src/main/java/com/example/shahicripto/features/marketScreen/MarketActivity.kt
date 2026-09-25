@@ -17,6 +17,7 @@ import com.example.shahicripto.R
 import com.example.shahicripto.databinding.ActivityMarketBinding
 import com.example.shahicripto.features.marketScreen.marketFragment.MarketFragment
 import com.example.shahicripto.features.marketScreen.newsFragment.NewsFragment
+import com.example.shahicripto.features.marketScreen.aiSignals.AiSignalsFragment
 import com.example.shahicripto.util.NetworkChecker
 import dagger.hilt.android.AndroidEntryPoint
 import www.sanju.motiontoast.MotionToast
@@ -122,31 +123,30 @@ class MarketActivity : AppCompatActivity() {
     }
 
     private fun firstRun() {
-        replaceFragment(if (initialTabId == R.id.menu_news) NewsFragment() else MarketFragment())
+        val initialFragment = when (initialTabId) {
+            R.id.menu_news -> NewsFragment()
+            R.id.menu_ai_signals -> AiSignalsFragment()
+            else -> MarketFragment()
+        }
+        replaceFragment(initialFragment)
         binding.bottomNavigationView.selectedItemId = initialTabId
-
-
     }
 
     private fun bottomNavigation() {
-
         binding.bottomNavigationView.setOnItemSelectedListener {
-
             when(it.itemId) {
-
                 R.id.menu_market -> {
                     replaceFragment(MarketFragment())
                 }
-
                 R.id.menu_news -> {
                     replaceFragment(NewsFragment())
                 }
-
-
+                R.id.menu_ai_signals -> {
+                    replaceFragment(AiSignalsFragment())
+                }
             }
             true
         }
-
     }
 
     private fun internetChecker(context: Context) {

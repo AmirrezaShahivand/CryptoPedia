@@ -42,6 +42,7 @@ import com.example.shahicripto.util.formatGroupedNumberText
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
+import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.SingleObserver
@@ -123,8 +124,32 @@ class CoinActivity : AppCompatActivity() {
         initChartUi()
         initStatisticsUi()
         initAboutUi()
+        loadCoinLogo()
         loadCoinPaprikaDetails()
         loadTodayOhlc()
+    }
+
+    private fun loadCoinLogo() {
+        val symbol = dataThisCoin.name.lowercase(Locale.US)
+        val coincapUrl = "https://assets.coincap.io/assets/icons/$symbol@2x.png"
+        val spothqUrl = "https://cdn.jsdelivr.net/gh/spothq/cryptocurrency-icons@master/128/color/$symbol.png"
+
+        val targetUrl = if (dataThisCoin.url.isNotBlank() && !dataThisCoin.url.contains("static.coinpaprika.com")) {
+            dataThisCoin.url
+        } else {
+            coincapUrl
+        }
+
+        Glide.with(this)
+            .load(targetUrl)
+            .placeholder(R.drawable.ic_coin_placeholder)
+            .error(
+                Glide.with(this)
+                    .load(spothqUrl)
+                    .placeholder(R.drawable.ic_coin_placeholder)
+                    .error(R.drawable.ic_coin_placeholder)
+            )
+            .into(binding.chart.imgCoinDetail)
     }
 
     private fun loadCoinPaprikaDetails() {
